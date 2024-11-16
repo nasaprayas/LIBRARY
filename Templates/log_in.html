@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Books Architects Library</title>
+    <link rel="icon" type="image/x-icon" href="{{  url_for('static', filename='media/icons/small_icon.ico')  }}">
+    <link rel="stylesheet" href="{{  url_for('static', filename='css/login_signup.css')  }}">
+</head>
+<body>
+    <img src="{{  url_for('static', filename='media/icons/full_icon_white.png')  }}" alt="icon">
+    <div class="container">
+        <div class="form-container">
+            <h2>Log In</h2>
+            <form>
+                <input type="text" placeholder="e-mail" class="input-field" id="email" name="email">
+                <input type="password" placeholder="Password" class="input-field" id="password" name="password">
+                <select class="input-field" id="user_type"  name="user_type">
+                    <option value="" disabled selected hidden>Select User Type</option>
+                    <option value="user">Member</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <button class="button secondary" id="signInButton" type="submit" disabled>Log In</button>
+            </form>
+        </div>
+    </div>
+    <script src="{{  url_for('static', filename='js/log_in.js')  }}"></script>
+</body>
+</html>

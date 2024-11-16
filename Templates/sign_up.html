@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Books Architects Library</title>
+    <link rel="icon" type="image/x-icon" href="{{  url_for('static', filename='media/icons/small_icon.ico')  }}">
+    <link rel="stylesheet" href="{{  url_for('static', filename='css/login_signup.css')  }}">
+</head>
+<body>
+    <img src="{{  url_for('static', filename='media/icons/full_icon_white.png')  }}" alt="icon">
+    <div class="container">
+        <div class="form-container">
+            <h2>Sign Up</h2>
+            <input type="text" placeholder="Full name" class="input-field" id="full_name" name="full_name">
+            <input type="text" placeholder="E-mail" class="input-field" id="email">
+            <input type="text" placeholder="Date Of Birth" class="input-field" onfocus="(this.type='date')" onblur="(this.type='text')" id="dob" name="dob">
+            <input type="password" placeholder="Password" class="input-field" id="password">
+            <button class="button secondary" id="signUnButton">Sign Up</button>
+            <p class="terms">By signing up, you agree to our terms of use and privacy policy.</p>
+        </div>
+    </div>
+    <script src="{{  url_for('static', filename='js/sign_up.js')  }}"></script>
+</body>
+</html>
