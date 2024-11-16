@@ -12,11 +12,16 @@ body {
     background-color: #f5f5f5;
 }
 
+h1 {
+    font-size: 200px;
+    color: #fff;
+  }
+
 header {
     display: flex;
-    align-items: center;
+    align-items: justify;
     justify-content: space-between;
-    background-color: #333;
+    background-color: #0d1a2c;
     color: #fff;
     padding: 15px 20px;
 }
@@ -39,7 +44,7 @@ nav a {
 }
 
 nav a.auth {
-    background-color: #4CAF50;
+    background-color: #0d1a2c;
     padding: 5px 10px;
     border-radius: 4px;
 }
@@ -60,7 +65,7 @@ main {
 
 .search-box {
     display: flex;
-    align-items: center;
+    align-items: left;
     border: 1px solid #ddd;
     border-radius: 25px;
     background-color: #fff;
@@ -74,12 +79,12 @@ main {
     border: none;
     outline: none;
     border-radius: 25px 0 0 25px;
-    width: 250px;
+    width: 600px;
 }
 
 .search-box button {
     padding: 12px;
-    background-color: #4CAF50;
+    background-color: #0d1a2c;
     color: #fff;
     font-size: 18px;
     border: none;
@@ -89,7 +94,7 @@ main {
 }
 
 .search-box button:hover {
-    background-color: #45a049;
+    background-color: #1d3c66;
 }
 
 .book-display {
@@ -111,13 +116,13 @@ main {
 }
 
 footer {
-    background-color: #333;
+    background-color: #0d1a2c;
     color: #fff;
     text-align: center;
     padding: 10px;
 }
 
-footer p {
+footer  {
     font-size: 14px;
     margin: 5px 0;
 }

@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Book Architects Library</title>
     <link rel="icon" type="image/x-icon" href="{{  url_for('static', filename='media/icons/small_icon.ico')  }}">
+    <link rel="stylesheet" href="{{  url_for('static', filename='css/login_signup.css')  }}">
     <link rel="stylesheet" href="{{  url_for('static', filename='css/home_page.css')  }}">
 </head>
 <body>
+    
     <header>
-        <h1>The Book Architects Library</h1>
+        <img src="{{  url_for('static', filename='media/icons/full_icon_white.png')  }}" alt="icon">
         <nav>
             <a href="#">Books ▼</a>
-            <a href="#">Browse</a>
+            <a href="#">Browse ▼</a>
             <a href="/login" class="auth">Log In</a>
             <a href="/signup" class="auth">Sign Up</a>
         </nav>
     </header>
     <main>
+        <h1><b>Welcome! </b></h1>
         <section class="search-section">
         <div class="search-box">
             <form>
@@ -28,15 +31,15 @@
         </section>
         <section class="book-display">
             <!-- Placeholder for book covers -->
-            <div class="book-placeholder">Book 1</div>
+            <!-- <div class="book-placeholder">Book 1</div>
             <div class="book-placeholder">Book 2</div>
             <div class="book-placeholder">Book 3</div>
-            <div class="book-placeholder">Book 4</div>
+            <div class="book-placeholder">Book 4</div> -->
         </section>
     </main>
     <footer>
-        <p>Contact Us: +91 - [Your Number]</p>
-        <p>Email: thebookarchitects@gmail.com</p>
+        <p1>contact us: +91 72380 36936</p1>
+        <p2>email: thebookarchitects@gmail.com</p2>
     </footer>
 
     <script src="../js/home_page.js"></script>
