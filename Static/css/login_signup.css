@@ -7,25 +7,24 @@
 
 body {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
     height: 100vh;
-    background-image: url('../media/backgronds/login_signup_home.jpg');
+    background-color: #0d1a2c;
     background-size: contain;
-    margin-left: 15%;
     background-repeat: round;
 }
 
-img {
-    height: 93px;
-    width: 538px;
-    object-fit: none;
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.container {
+.form-container {
     background-color: #fff;
-    width: 410px;
+    width: 470px;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

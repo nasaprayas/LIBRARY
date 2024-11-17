@@ -17,21 +17,19 @@
         </nav>
     </header>
     <main>
-        <h1><b>Welcome! </b></h1>
         <section class="search-section">
-        <div class="search-box">
-            <form>
-                <input type="text" id="searchInput" placeholder="Search for a book" name="search">
-                <button type="submit"><img class="search-icon" src="{{  url_for('static', filename='media/icons/search_icon.png')  }}" alt=""></button>
-            </form>
-        </div>
+            <h1><b>Welcome!</b></h1>
+            <div class="search-box">
+                <form>
+                    <input type="text" id="searchInput" placeholder="Search for a book" name="search">
+                    <button type="submit"><img class="search-icon" src="{{  url_for('static', filename='media/icons/search_icon.png')  }}" alt=""></button>
+                </form>
+            </div>
         </section>
         <section class="book-display">
-            <!-- Placeholder for book covers -->
-            <!-- <div class="book-placeholder">Book 1</div>
-            <div class="book-placeholder">Book 2</div>
-            <div class="book-placeholder">Book 3</div>
-            <div class="book-placeholder">Book 4</div> -->
+        </section>
+        <section class="bg-image">
+            <img src="{{  url_for('static', filename='media/backgrounds/login_signup_home.png')  }}" alt="">
         </section>
     </main>
     <footer>

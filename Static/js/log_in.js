@@ -1,9 +1,9 @@
-const userIdInput = document.getElementById('email');
+const userMailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
-const signInButton = document.getElementById('signInButton');
+const signInButton = document.getElementById('logInButton');
 
-function toggleSignInButton() {
-    if (userIdInput.value.trim() !== "" && passwordInput.value.trim() !== "") {
+function toggleLogInButton() {
+    if (userMailInput.value.trim() !== "" && passwordInput.value.trim() !== "") {
         signInButton.disabled = false;
         signInButton.classList.remove('secondary');
     } else {
@@ -12,5 +12,5 @@ function toggleSignInButton() {
         }
 }
 
-userIdInput.addEventListener('input', toggleSignInButton);
-passwordInput.addEventListener('input', toggleSignInButton);
+userMailInput.addEventListener('input', toggleLogInButton);
+passwordInput.addEventListener('input', toggleLogInButton);

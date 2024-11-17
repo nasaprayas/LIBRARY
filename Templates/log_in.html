@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="{{  url_for('static', filename='css/login_signup.css')  }}">
 </head>
 <body>
-    <img src="{{  url_for('static', filename='media/icons/full_icon_white.png')  }}" alt="icon">
     <div class="container">
+        <img src="{{  url_for('static', filename='media/icons/full_icon_white.png')  }}" alt="icon">
         <div class="form-container">
             <h2>Log In</h2>
-            <form>
+            <form action="/home_page">
                 <input type="text" placeholder="e-mail" class="input-field" id="email" name="email">
                 <input type="password" placeholder="Password" class="input-field" id="password" name="password">
                 <select class="input-field" id="user_type"  name="user_type">
@@ -20,9 +20,12 @@
                     <option value="user">Member</option>
                     <option value="admin">Admin</option>
                 </select>
-                <button class="button secondary" id="signInButton" type="submit" disabled>Log In</button>
+                <button class="button secondary" id="logInButton" type="submit" disabled>Log In</button>
             </form>
         </div>
+    </div>
+    <div class="bg-image">
+        <img src="{{  url_for('static', filename='media/backgrounds/login_signup_home.png')  }}" alt="">
     </div>
     <script src="{{  url_for('static', filename='js/log_in.js')  }}"></script>
 </body>
