@@ -5,11 +5,9 @@ const passwordInput = document.getElementById('password');
 const signInButton = document.getElementById('signUpButton');
 
 function toggleSignUpButton() {
-    if (userMailInput.value.trim() !== "" && passwordInput.value.trim() !== "" && nameInput.value.trim() !== "" && dobInput.value.trim() !== "") {
-        signInButton.disabled = false;
+    if (userMailInput.value.trim() !== "" && passwordInput.value.trim() !== "" && nameInput.value.trim() !== "" && dobInput.value.trim() !== "") {4
         signInButton.classList.remove('secondary');
     } else {
-        signInButton.disabled = true;
         signInButton.classList.add('secondary');
         }
 }

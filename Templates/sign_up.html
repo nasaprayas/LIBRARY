@@ -12,15 +12,16 @@
         <img src="{{  url_for('static', filename='media/icons/full_icon_white.png')  }}" alt="icon">
         <div class="form-container">
             <h2>Sign Up</h2>
-            <form action="/login">
-                <input type="text" placeholder="Full name" class="input-field" id="full_name" name="full_name">
-                <input type="text" placeholder="E-mail" class="input-field" id="email">
-                <input type="text" placeholder="Date Of Birth" class="input-field" onfocus="(this.type='date')" onblur="(this.type='text')" id="dob" name="dob">
-                <input type="password" placeholder="Password" class="input-field" id="password">
+            <form method="POST">
+                <input type="text" placeholder="Full name" class="input-field" id="full_name" name="full_name" required>
+                <input type="text" placeholder="E-mail" class="input-field" id="email" name="email" required>
+                <input type="text" placeholder="Date Of Birth" class="input-field" onfocus="(this.type='date')" onblur="(this.type='text')" id="dob" name="dob" required>
+                <input type="password" placeholder="Password" class="input-field" id="password" name='password' required>
                 <button class="button secondary" id="signUpButton" type="submit">Sign Up</button>
             </form>
             <p class="terms">By signing up, you agree to our terms of use and privacy policy.</p>
         </div>
+        <h2 style="color: aliceblue;">{{error}}</h2>
     </div>
     <div class="bg-image">
         <img src="{{  url_for('static', filename='media/backgrounds/login_signup_home.png')  }}" alt="">

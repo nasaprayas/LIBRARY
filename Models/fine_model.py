@@ -1,11 +1,12 @@
 from utils.utils import db
+from Models.member_model import Members
 
-class FineModel(db.Model):
+class Fines(db.Model):
     __tablename__ = 'fine'
-    fine_id = db.Column(db.String(10), primary_key=True)
+    fine_id = db.Column(db.Integer, primary_key=True)
     amount = db.Column(db.Float, nullable=False)
     days_delay = db.Column(db.Date, nullable=False)
-    member_id = db.Column(db.String(10), db.ForeignKey('member.member_id', ondelete="CASCADE"), nullable=False)
+    member_id = db.Column(db.Integer, db.ForeignKey('member.id', ondelete="CASCADE"), nullable=False)
 
     member = db.relationship("MemberModel", backref=db.backref("fines", lazy=True))
 

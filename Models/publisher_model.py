@@ -1,8 +1,8 @@
 from utils.utils import db
 
-class PublisherModel(db.Model):
+class Publishers(db.Model):
     __tablename__ = 'publisher'
-    publisher_id = db.Column(db.String(10), primary_key=True)
+    publisher_id = db.Column(db.Integer, primary_key=True)
     publisher_name = db.Column(db.String(50), nullable=False)
     publisher_address = db.Column(db.Text, nullable=False)
     about = db.Column(db.Text)

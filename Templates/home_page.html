@@ -12,13 +12,17 @@
     <header>
         <img src="{{  url_for('static', filename='media/icons/full_icon_white.png')  }}" alt="icon">
         <nav>
-            <a href="/login" class="auth">Log In</a>
-            <a href="/signup" class="auth">Sign Up</a>
+                <a href="/login" class="auth">Log In</a>
+                <a href="/signup" class="auth">Sign Up</a>
         </nav>
     </header>
     <main>
         <section class="search-section">
-            <h1><b>Welcome!</b></h1>
+            {% if current_user.is_authenticated %}
+                <h1>Wlecome, {{current_user.name}}</h1>
+            {% else %}
+                <h1>Welcome, Guest</h1>
+            {% endif %}
             <div class="search-box">
                 <form>
                     <input type="text" id="searchInput" placeholder="Search for a book" name="search">

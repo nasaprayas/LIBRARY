@@ -1,8 +1,8 @@
 from utils.utils import db
 
-class ShelfModel(db.Model):
+class Shelfs(db.Model):
     __tablename__ = 'shelf'
-    shelf_id = db.Column(db.String(10), primary_key=True)
+    shelf_id = db.Column(db.Integer, primary_key=True)
     quantity = db.Column(db.Integer, nullable=False)
     shelf_floor = db.Column(db.Integer, nullable=False)
     shelf_rows = db.Column(db.Integer, nullable=False)

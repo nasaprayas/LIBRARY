@@ -12,17 +12,18 @@
         <img src="{{  url_for('static', filename='media/icons/full_icon_white.png')  }}" alt="icon">
         <div class="form-container">
             <h2>Log In</h2>
-            <form action="/home_page">
-                <input type="text" placeholder="e-mail" class="input-field" id="email" name="email">
-                <input type="password" placeholder="Password" class="input-field" id="password" name="password">
-                <select class="input-field" id="user_type"  name="user_type">
+            <form method="POST">
+                <input type="text" placeholder="e-mail" class="input-field" id="email" name="email" required>
+                <input type="password" placeholder="Password" class="input-field" id="password" name="password" required>
+                <select class="input-field" id="user_type"  name="user_type" required>
                     <option value="" disabled selected hidden>Select User Type</option>
-                    <option value="user">Member</option>
+                    <option value="member">Member</option>
                     <option value="admin">Admin</option>
                 </select>
-                <button class="button secondary" id="logInButton" type="submit" disabled>Log In</button>
+                <button class="button secondary" id="logInButton" type="submit">Log In</button>
             </form>
         </div>
+        <h2 style="color: aliceblue;">{{error}}</h2>
     </div>
     <div class="bg-image">
         <img src="{{  url_for('static', filename='media/backgrounds/login_signup_home.png')  }}" alt="">

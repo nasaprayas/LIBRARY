@@ -1,16 +1,16 @@
 from utils.utils import db
-from Models.author_model import AuthorModel
-from Models.publisher_model import PublisherModel
-from Models.vendor_model import VendorModel
-from Models.shelf_model import ShelfModel
-class BookModel(db.Model):
+from Models.author_model import Authors
+from Models.publisher_model import Publishers
+from Models.vendor_model import Vendors
+from Models.shelf_model import Shelfs
+class Books(db.Model):
     __tablename__ = 'book'
-    book_id = db.Column(db.String(10), primary_key=True)
-    author_id = db.Column(db.String(10), db.ForeignKey('author.author_id', onupdate="CASCADE"), nullable=False)
+    book_id = db.Column(db.Integer, primary_key=True)
+    author_id = db.Column(db.Integer, db.ForeignKey('author.author_id', onupdate="CASCADE"), nullable=False)
     book_title = db.Column(db.String(80), nullable=False)
-    publisher_id = db.Column(db.String(10), db.ForeignKey('publisher.publisher_id', onupdate="CASCADE"), nullable=False)
-    vendor_id = db.Column(db.String(10), db.ForeignKey('vendor.vendor_id', onupdate="CASCADE"), nullable=False)
-    shelf_id = db.Column(db.String(10), db.ForeignKey('shelf.shelf_id', onupdate="CASCADE"), nullable=False)
+    publisher_id = db.Column(db.Integer, db.ForeignKey('publisher.publisher_id', onupdate="CASCADE"), nullable=False)
+    vendor_id = db.Column(db.Integer, db.ForeignKey('vendor.vendor_id', onupdate="CASCADE"), nullable=False)
+    shelf_id = db.Column(db.Integer, db.ForeignKey('shelf.shelf_id', onupdate="CASCADE"), nullable=False)
     category = db.Column(db.String(50), nullable=False)
     price = db.Column(db.Float, nullable=False)
     language_name = db.Column(db.String(50), nullable=False)

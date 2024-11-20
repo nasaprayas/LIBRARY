@@ -1,14 +1,21 @@
 from utils.utils import db
+from flask_login import UserMixin
+from datetime import datetime
 
-class EmployeeModel(db.Model):
+class Employees(UserMixin,db.Model):
     __tablename__ = 'employee'
-    employee_id = db.Column(db.String(10), primary_key=True)
-    employee_name = db.Column(db.String(50), nullable=False)
-    employee_email = db.Column(db.String(50), nullable=False)
-    employee_phone = db.Column(db.BigInteger, nullable=False)
-    gender = db.Column(db.String(10), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    mail = db.Column(db.String(50), nullable=False)
     date_of_birth = db.Column(db.Date, nullable=False)
-    date_of_joining = db.Column(db.Date, nullable=False)
+    password_hash = db.Column(db.String(255), nullable=False)
+    gender = db.Column(db.String(10))
+    date_of_joining = db.Column(db.Date, default=datetime.utcnow)
+    country = db.Column(db.String(50))
+    state = db.Column(db.String(50))
+    city = db.Column(db.String(50))
+    street = db.Column(db.Integer)
+    type = db.Column(db.String(10), default='member')
 
     def __repr__(self):
         return f"<Employee {self.employee_name}>"
@@ -16,11 +23,13 @@ class EmployeeModel(db.Model):
     def to_dict(self):
         """Convert the EmployeeModel instance into a dictionary format."""
         return {
-            'employee_id': self.employee_id,
-            'employee_name': self.employee_name,
+            'employee_id': self.id,
+            'employee_name': self.name,
             'employee_email': self.employee_email,
-            'employee_phone': self.employee_phone,
             'gender': self.gender,
             'date_of_birth': self.date_of_birth.isoformat() if self.date_of_birth else None,
             'date_of_joining': self.date_of_joining.isoformat() if self.date_of_joining else None,
         }
+    
+    def get_id(self):
+        return self.mail
