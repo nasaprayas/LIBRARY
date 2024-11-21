@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #0d1a2c;
+    background-size: contain;
+}
+
+h1 {
+    color: #fff;
+}
+
+img {
+    height: 100%;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    height: 50px;
+    padding: 10px 5px 0px 5px;
+}
+
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+main {
+    padding: 20px;
+    transition: margin-left 0.2s linear;
+}
+
+.main {
+    margin-left: 250px;
+    transition: all 0.2s linear;
+}
+
+footer {
+    background-color: #0d1a2c;
+    color: #fff;
+    text-align: center;
+    padding: 10px 5px 10px 5px;
+    height: 3vh;
+    /* font-size: 14px; */
+}
+
+svg.nav-button {
+    z-index: 2;
+}
+
+#dots {
+    transition: fill 0.2s linear;
+}
+
+.menu_dots {
+    fill: #FFFFFF;
+    transition: all 0.2s linear;
+}
+
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: width 0.2s linear;
+}
+
+.disappear {
+    width: 0%;
+    transition: all 0.2s linear;
+}
+
+.sidenav a,
+.dropbtn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 20px;
+    color: #000000;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s linear;
+}
+
+.sidenav a:hover,
+.dropdown:hover .dropbtn {
+    color: #f1f1f1;
+    background-color: #0d1a2c;
+    padding-left: 20px;
+    transition: all 0.2s linear;
+}
+
+.dropdown-content {
+    max-height: 0px;
+    overflow-y: hidden;
+    transition: max-height 0.2s linear;
+}
+
+.dropdown:hover .dropdown-content {
+    max-height: 200px;
+    transition: max-height 0.2s linear 0.5s;
+}
+
+.dropdown-content a {
+    padding-left: 24px;
+}
+
+.dropdown-content a:hover {
+    padding-left: 28px;
+    background-color: #0d1a2c;
+    color: #ffffff;
+}

@@ -1,58 +1,104 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 15px;
-    text-align: center;
-}
-
-header h1 {
-    margin: 0;
-}
-
-nav a {
-    color: #fff;
-    margin: 0 10px;
-    text-decoration: none;
-}
-
 main {
-    padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
-form {
-    max-width: 600px;
-    margin: 0 auto;
+/* Form container styling */
+#dashboard-form {
+    background-color: #12263f; /* Slightly lighter shade than body background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-form div {
-    margin-bottom: 15px;
-}
-
-label {
-    display: inline;
-    font-weight: bold;
-}
-
-input, select, button {
+/* Input and select field styling */
+#dashboard-form input, 
+#dashboard-form select, 
+#dashboard-form button {
     width: 100%;
     padding: 10px;
-    margin-top: 5px;
-    display: inline;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #1c3a57; /* Border matches the form background */
+    background-color: #16324a; /* Input background matches the theme */
+    color: #e0e0e0;
+    font-size: 14px;
 }
 
-button {
-    background-color: #333;
-    color: #fff;
+/* Input focus styling */
+#dashboard-form input:focus, 
+#dashboard-form select:focus {
+    outline: none;
+    border-color: #4ea1d3; /* Brighter border for focus */
+    box-shadow: 0px 0px 5px rgba(78, 161, 211, 0.8);
+}
+
+/* Label styling */
+#dashboard-form label {
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    color: #ffffff; /* Keeps labels readable */
+}
+
+/* Button styling */
+#dashboard-form button {
+    background-color: #1d9bf0; /* Brighter blue for contrast */
     border: none;
+    font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-button:hover {
-    background-color: #555;
+#dashboard-form button:hover {
+    background-color: #167ab8;
+    box-shadow: 0px 4px 15px rgba(29, 155, 240, 0.5);
+}
+
+/* File input styling */
+#profile_pic {
+    padding: 10px;
+    cursor: pointer;
+    display: none;
+}
+
+/* Dividers between input fields */
+#dashboard-form div {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+    width: 150px !important;
+    height: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 100%;
+    border: 1px solid #1c3a57; /* Border matches the form background */
+    background-color: #16324a; /* Input background matches the theme */
+    color: #e0e0e0;
+    font-size: 14px;
+}
+
+.profile img{
+    height: 100%;
+}
+
+.profile:hover{
+    outline: none;
+    border-color: #4ea1d3; /* Brighter border for focus */
+    box-shadow: 0px 0px 5px rgba(78, 161, 211, 0.8);
+}
+
+/* Add rounded corners for all elements */
+input, select, button {
+    border-radius: 5px;
 }
