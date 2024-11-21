@@ -15,7 +15,7 @@ class Employees(UserMixin,db.Model):
     state = db.Column(db.String(50))
     city = db.Column(db.String(50))
     street = db.Column(db.Integer)
-    type = db.Column(db.String(10), default='member')
+    type = db.Column(db.String(10), default='admin')
 
     def __repr__(self):
         return f"<Employee {self.employee_name}>"
