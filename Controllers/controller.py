@@ -18,3 +18,8 @@ class authenticaionController:
         type = request.form.get('user_type')
         result = userService.log_in(mail=mail, password=password,type=type)
         return result
+
+class userController():
+    @staticmethod
+    def update_details():
+        return
