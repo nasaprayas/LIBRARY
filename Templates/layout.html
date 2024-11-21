@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="{{  url_for('static', filename='media/icons/small_icon.ico')  }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
     {% block css %}
     {% endblock %}
@@ -53,6 +54,9 @@
                 <a href="#">Book Location</a>
             </div>
         </div>
+        {% else %}
+        <a href="/login">Log In</a>
+        <a href="/signup">Sign Up</a>
         {% endif %}
     </nav>
     <header>

@@ -1,5 +1,7 @@
 from flask import request
 from Services.service import userService
+from werkzeug.utils import secure_filename
+from flask_login import current_user
 
 class authenticaionController:
     @staticmethod
@@ -21,5 +23,22 @@ class authenticaionController:
 
 class userController():
     @staticmethod
-    def update_details():
-        return
+    def update_user():
+        data = request.form
+        file = request.files['profile_pic']
+        if not file.filename:
+            pfp = current_user.profile_pic
+        elif not userService.is_allowed(file.filename):
+            return {'error': 'file type not compatible, upload gif, jpg or jpeg'}
+        else:
+            pfp = secure_filename(file.filename)
+            userService.upload_profile_pic(file)
+        updated_user = userService.update_user(pfp=pfp,
+                                               name=data['name'],
+                                               dob=data['dob'],
+                                               gender=data['gender'],
+                                               country=data['country'],
+                                               state=data['state'],
+                                               city=data['city'],
+                                               street=data['street'])
+        return updated_user

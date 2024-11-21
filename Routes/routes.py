@@ -35,5 +35,5 @@ def logout():
 @login_required
 def dashboard():
     if request.method == 'POST':
-        userController.update_details()
-    return render_template('dashboard.html')
+        userController.update_user()
+    return render_template('dashboard.html', pfp=current_user.profile_pic)

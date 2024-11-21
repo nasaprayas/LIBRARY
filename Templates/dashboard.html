@@ -4,9 +4,15 @@
 {% endblock %}
 {% block content %}
 <main id="main">
-    <form id="dashboard-form" action="/update_dashboard" method="POST">
+    <form id="dashboard-form" method="POST" enctype="multipart/form-data">
         <div class="profile">
-            <label for="profile_pic"><img src="{{  url_for('static', filename='media/profile_pics/default.png')  }}" alt=""></label>
+            <label for="profile_pic"><img 
+                {% if not current_user.profile_pic %}
+                src="{{  url_for('static', filename='media/profile_pics/default.png')  }}"
+                {% else %}
+                src="/static/media/profile_pics/{{pfp}}"
+                {% endif %} 
+                alt=""></label>
             <input type="file" name="profile_pic" id="profile_pic">
         </div>
         <div>
@@ -36,7 +42,7 @@
         </div>
         <div>
             <label for="country">State:</label>
-            <input type="text" id="country" name="country" value="{{ current_user.country }}">
+            <input type="text" id="state" name="state" value="{{ current_user.state }}">
         </div>
         <div>
             <label for="city">City:</label>
@@ -44,7 +50,7 @@
         </div>
         <div>
             <label for="city">Street:</label>
-            <input type="text" id="city" name="city" value="{{ current_user.city }}">
+            <input type="text" id="street" name="street" value="{{ current_user.street }}">
         </div>
         <div>
             <label for="type">User Type:</label>
