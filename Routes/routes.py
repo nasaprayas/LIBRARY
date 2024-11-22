@@ -37,3 +37,7 @@ def dashboard():
     if request.method == 'POST':
         userController.update_user()
     return render_template('dashboard.html', pfp=current_user.profile_pic)
+
+@bp.route('/add_book', methods=['GET', 'POST'])
+def add_book():
+    return render_template('add_book.html')

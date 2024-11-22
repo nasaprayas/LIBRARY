@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/add_book.css') }}">
+{% endblock %}
+{% block content %}
+<main id="main">
+    <form id="add_book-form" method="POST" enctype="multipart/form-data">
+        <div class="book_icon">
+            <img src="{{  url_for('static', filename='media/icons/addbook.png')  }}" alt="icon">   
+        </div>
+        <div>
+            <label for="book_title">Book Title:</label>
+            <input type="text" id="book_title" name="book_title" required>
+        </div>
+        <div>
+            <label for="author_name">Author:</label>
+            <input type="text" id="author_name" name="author_name" readonly>
+        </div>
+        <div>
+            <label for="vendor_name">Vendor:</label>
+            <input type="text" id="vendor_name" name="vendor_name" required>
+        </div>
+        <div>
+            <label for="shelf_id">Shelf Id:</label>
+            <input type="text" id="shelf_id" name="shelf_id" required>
+        </div>
+        <div>
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category" required>
+        </div>
+        <div>
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" required>
+        </div>
+        <div>
+            <label for="language_name">Language:</label>
+            <input type="text" id="language_name" name="language_name" required>
+        </div>
+        <div>
+            <label for="subject_name">Subject:</label>
+            <input type="text" id="subject_name" name="subject_name" required>
+        </div>
+        <div>
+            <label for="genre">Genre:</label>
+            <input type="text" id="genre" name="genre" required>
+        </div>
+        <div>
+            <label for="date_of_publishing">Date of Publishing: </label>
+            <input type="date" id="date_of_publishing" name="date_of_publishing" required>
+        </div>
+        <div>
+            <label for="date_of_addition">Date of Addition: </label>
+            <input type="date" id="date_of_addition" name="date_of_addition" required>
+        </div>
+        <div>
+            <label for="availability">Availability: </label>
+            <input type="text" id="availability" name="availability" required>
+        </div>
+        <div>
+            <label for="shelf_date">Shelf Date: </label>
+            <input type="date" id="shelf_date" name="shelf_date" required>
+        </div>
+        <div>
+            <label for="bought_on">Bought On: </label>
+            <input type="date" id="bought_on" name="bought_on" required>
+        </div>
+        <button type="submit">Add</button>
+    </form>
+</main>
+{% endblock %}

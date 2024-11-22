@@ -14,7 +14,7 @@
 <body>
     <nav class="sidenav disappear" id="side_nav">
         {% if current_user.is_authenticated and current_user.type == 'member' %}
-        <a href="/dashboard">dashboard</a>
+        <a href="/dashboard">Dashboard</a>
         <a href="/logout">Log Out</a>
         {% elif current_user.is_authenticated and current_user.type == 'admin' %}
         <div class="dropdown">
