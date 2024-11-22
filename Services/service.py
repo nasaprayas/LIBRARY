@@ -91,6 +91,8 @@ class authorService:
             origin=data.get('origin'),
             about=data.get('about')
         )
+        db.session.add(new_author)
+        db.session.commit()
         return new_author
     
     @staticmethod

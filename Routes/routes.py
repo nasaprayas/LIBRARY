@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, url_for, redirect, jsonify
-from Controllers.controller import authenticaionController, SearchController, BookController, userController, employeeController
+from Controllers.controller import authenticaionController, SearchController, BookController, userController, employeeController, authorController, vendorController
 from flask_login import login_required, current_user, logout_user
 
 bp = Blueprint('bp', __name__)
@@ -43,15 +43,18 @@ def add_empoyee():
     admin = employeeController.add_employee()
     return
 
-
-
 @bp.route('/add_book', methods=['GET', 'POST'])
 def add_book():
     return render_template('add_book.html')
 
 @bp.route('/add_author', methods=['GET', 'POST'])
 def add_author():
-    return render_template('add_author.html')
+    if request.method == 'POST':
+        author = authorController.add_author().to_dict()
+        if 'error' in author:
+            return render_template('add_author.html', error=author['error'])
+        return render_template('add_author.html', error='')
+    return render_template('add_author.html', error='')
 
 @bp.route('/add_vendor', methods=['GET', 'POST'])
 def add_vendor():
