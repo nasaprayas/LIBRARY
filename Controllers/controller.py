@@ -1,5 +1,7 @@
 from flask import request
-from Services.service import userService
+from Services.service import userService, SearchService, BookService
+from flask import Blueprint, jsonify, request
+from Views.view import View
 
 class authenticaionController:
     @staticmethod
@@ -18,3 +20,18 @@ class authenticaionController:
         type = request.form.get('user_type')
         result = userService.log_in(mail=mail, password=password,type=type)
         return result
+    
+class SearchController:
+    @staticmethod
+    def search_book(book):
+        found = SearchService.get_books_by_name_partial(book)
+        if not found: 
+            return View.render_error('Book not found'), 404
+        return View.render_book(found), 200
+    
+class BookController:
+    @staticmethod
+    def add_book():
+        data = request.json
+        new_book = BookService.add_book(data)
+        return jsonify(new_book.to_dict()), 201     

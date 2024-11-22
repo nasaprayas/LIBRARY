@@ -21,6 +21,7 @@ class Books(db.Model):
     availability = db.Column(db.Integer, nullable=False)
     shelf_date = db.Column(db.Date, nullable=False)
     bought_on = db.Column(db.Date, nullable=False)
+    cover_page = db.Column(db.String(100), nullable=True)
     
     def __repr__(self):
         return f"<Book {self.book_title}>"

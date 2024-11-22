@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, url_for, redirect
-from Controllers.controller import authenticaionController
+from Controllers.controller import authenticaionController, SearchController, BookController
 from flask_login import login_required, current_user
 
 bp = Blueprint('bp', __name__)
@@ -27,3 +27,12 @@ def signup():
             return redirect(url_for('bp.login'))
         return render_template('sign_up.html', error='Try Again!!!')
     return render_template('sign_up.html', error=' ')
+
+
+@bp.route('/search/book', methods=['GET','POST'])
+def search(book):
+    return SearchController.search_book(book)
+
+@bp.route('/add/book', methods=['POST'])
+def add_book():
+    return BookController.add_book()
