@@ -5,6 +5,7 @@ from datetime import datetime
 class Employees(UserMixin,db.Model):
     __tablename__ = 'employee'
     id = db.Column(db.Integer, primary_key=True)
+    profile_pic = db.Column(db.Text)
     name = db.Column(db.String(50), nullable=False)
     mail = db.Column(db.String(50), nullable=False)
     date_of_birth = db.Column(db.Date, nullable=False)
@@ -14,8 +15,8 @@ class Employees(UserMixin,db.Model):
     country = db.Column(db.String(50))
     state = db.Column(db.String(50))
     city = db.Column(db.String(50))
-    street = db.Column(db.Integer)
-    type = db.Column(db.String(10), default='member')
+    street = db.Column(db.String(50))
+    type = db.Column(db.String(10), default='admin')
 
     def __repr__(self):
         return f"<Employee {self.employee_name}>"

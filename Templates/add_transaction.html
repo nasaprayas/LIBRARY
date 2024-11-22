@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/add_book.css') }}">
+{% endblock %}
+{% block content %}
+<main id="main">
+    <form id="add_book-form" method="POST" enctype="multipart/form-data">
+        <div class="book_icon">
+            <img src="{{  url_for('static', filename='media/icons/addtransaction.png')  }}" alt="icon">   
+        </div>
+        <div>
+            <label for="transaction_type">Transaction Type:</label>
+            <select id="transaction_type" name="transaction_type">
+                <option value = "" selected hidden>Not Selected</option>
+                <option value = "issue">Issue</option>
+                <option value = "return">Return</option>
+            </select>
+        </div>
+        <div>
+            <label for="transaction_date">Transaction Date: </label>
+            <input type="date" id="transaction_date" name="transaction_date" required>
+        </div>
+        <div>
+            <label for="employee_name">Employee Name:</label>
+            <input type="text" id="employee_name" name="employee_name" required>
+        </div>
+        <div>
+            <label for="member_name">Member Name:</label>
+            <input type="text" id="member_name" name="member_name" required>
+        </div>
+        <div>
+            <label for="book_title">Book Title:</label>
+            <input type="text" id="book_title" name="book_title" required>
+        </div>
+        <button type="submit">Add</button>
+    </form>
+</main>
+{% endblock %}

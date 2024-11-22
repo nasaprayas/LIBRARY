@@ -1,57 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
-</head>
-<body>
-    <header>
-        <h1>Your Dashboard</h1>
-        <nav>
-            <a href="/logout">Logout</a>
-        </nav>
-    </header>
-    <main>
-        <form id="dashboard-form" action="/update_dashboard" method="POST">
-            <div>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" value="{{ current_user.name }}" required>
-            </div>
-            <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="{{ current_user.mail }}" readonly>
-            </div>
-            <div>
-                <label for="dob">Date of Birth:</label>
-                <input type="date" id="dob" name="dob" value="{{ current_user.date_of_birth }}" required>
-            </div>
-            <div>
-                <label for="gender">Gender:</label>
-                <select id="gender" name="gender">
-                    <option value="Male" {% if current_user.gender == "Male" %} selected {% endif %}>Male</option>
-                    <option value="Female" {% if current_user.gender == "Female" %} selected {% endif %}>Female</option>
-                    <option value="Other" {% if current_user.gender == "Other" %} selected {% endif %}>Other</option>
-                </select>
-            </div>
-            <div>
-                <label for="country">Country:</label>
-                <input type="text" id="country" name="country" value="{{ current_user.country }}">
-            </div>
-            <div>
-                <label for="city">City:</label>
-                <input type="text" id="city" name="city" value="{{ current_user.city }}">
-            </div>
-            <div>
-                <label for="type">Type:</label>
-                <input type="text" id="type" name="type" value="{{ current_user.type }}" readonly>
-            </div>
-            <button type="submit">Update Details</button>
-        </form>
-    </main>
-    <footer>
-        <p>Contact us: +91 72380 36936 | Email: thebookarchitects@gmail.com</p>
-    </footer>
-</body>
-</html>
+{% extends "layout.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+{% block content %}
+<main id="main">
+    <form id="dashboard-form" method="POST" enctype="multipart/form-data">
+        <div class="profile">
+            <label for="profile_pic"><img 
+                {% if not current_user.profile_pic %}
+                src="{{  url_for('static', filename='media/profile_pics/default.png')  }}"
+                {% else %}
+                src="/static/media/profile_pics/{{pfp}}"
+                {% endif %} 
+                alt=""></label>
+            <input type="file" name="profile_pic" id="profile_pic">
+        </div>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ current_user.name }}" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ current_user.mail }}" readonly>
+        </div>
+        <div>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" value="{{ current_user.date_of_birth }}" required>
+        </div>
+        <div>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="None" {% if current_user.gender=="None" %} selected {% endif %} hidden>Not Selected</option>
+                <option value="Male" {% if current_user.gender=="Male" %} selected {% endif %}>Male</option>
+                <option value="Female" {% if current_user.gender=="Female" %} selected {% endif %}>Female</option>
+                <option value="Other" {% if current_user.gender=="Other" %} selected {% endif %}>Other</option>
+            </select>
+        </div>
+        <div>
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" value="{{ current_user.country }}">
+        </div>
+        <div>
+            <label for="country">State:</label>
+            <input type="text" id="state" name="state" value="{{ current_user.state }}">
+        </div>
+        <div>
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" value="{{ current_user.city }}">
+        </div>
+        <div>
+            <label for="city">Street:</label>
+            <input type="text" id="street" name="street" value="{{ current_user.street }}">
+        </div>
+        <div>
+            <label for="type">User Type:</label>
+            <input type="text" id="type" name="type" value="{{ current_user.type }}" readonly>
+        </div>
+        <button type="submit">Update Details</button>
+    </form>
+</main>
+{% endblock %}
