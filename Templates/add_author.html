@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/add_book.css') }}">
+{% endblock %}
+{% block content %}
+<main id="main">
+    <form id="add_book-form" method="POST" enctype="multipart/form-data">
+        <div class="book_icon">
+            <img src="{{  url_for('static', filename='media/icons/addauthor.png')  }}" alt="icon">   
+        </div>
+        <div>
+            <label for="author_name">Author:</label>
+            <input type="text" id="author_name" name="author_name" readonly>
+        </div>
+        <div>
+            <label for="author_dob">Date of Birth: </label>
+            <input type="date" id="author_dob" name="author_dob" required>
+        </div>
+        <div>
+            <label for="author_origin">Author Origin:</label>
+            <input type="text" id="author_origin" name="author_origin" required>
+        </div>
+        <div>
+            <label for="about">About:</label>
+            <input type="text" id="about" name="about" required>
+        </div>
+        <button type="submit">Add</button>
+    </form>
+</main>
+{% endblock %}

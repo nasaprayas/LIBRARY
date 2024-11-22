@@ -41,3 +41,19 @@ def dashboard():
 @bp.route('/add_book', methods=['GET', 'POST'])
 def add_book():
     return render_template('add_book.html')
+
+@bp.route('/add_author', methods=['GET', 'POST'])
+def add_author():
+    return render_template('add_author.html')
+
+@bp.route('/add_vendor', methods=['GET', 'POST'])
+def add_vendor():
+    return render_template('add_vendor.html')
+
+@bp.route('/add_publisher', methods=['GET', 'POST'])
+def add_publisher():
+    return render_template('add_publisher.html')
+
+@bp.route('/add_transaction', methods=['GET', 'POST'])
+def add_transaction():
+    return render_template('add_transaction.html')
