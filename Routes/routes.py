@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template, request, url_for, redirect
-from Controllers.controller import authenticaionController, userController
+from flask import Blueprint, render_template, request, url_for, redirect, jsonify
+from Controllers.controller import authenticaionController, userController, employeeController
 from flask_login import login_required, current_user, logout_user
 
 bp = Blueprint('bp', __name__)
@@ -37,3 +37,9 @@ def dashboard():
     if request.method == 'POST':
         userController.update_user()
     return render_template('dashboard.html', pfp=current_user.profile_pic)
+
+@bp.route('/add/admin', methods=['POST'])
+def add_empoyee():
+    admin = employeeController.add_employee()
+    return
+

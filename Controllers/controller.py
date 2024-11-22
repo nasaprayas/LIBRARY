@@ -1,5 +1,5 @@
 from flask import request
-from Services.service import userService
+from Services.service import userService, employeeService, authorService, vendorService
 from werkzeug.utils import secure_filename
 from flask_login import current_user
 
@@ -10,8 +10,12 @@ class authenticaionController:
         password=request.form.get('password')
         dob=request.form.get('dob')
         email=request.form.get('email')
-        user = userService.sign_up(name=full_name,password=password,dob=dob,mail=email)
-        return user
+        new_member = userService.get_member_by_mail(email)
+        if not new_member:
+            new_user = userService.sign_up(name=full_name,password=password,dob=dob,mail=email)
+            return new_user
+        else:
+            return {'error': 'Admin already exists'}
     
     @staticmethod
     def login():
@@ -21,7 +25,7 @@ class authenticaionController:
         result = userService.log_in(mail=mail, password=password,type=type)
         return result
 
-class userController():
+class userController:
     @staticmethod
     def update_user():
         data = request.form
@@ -43,4 +47,105 @@ class userController():
                                                street=data['street'])
         return updated_user
     
-# class employeeController():
+class employeeController:
+    @staticmethod
+    def add_employee():
+        data = request.form
+        new_employee = userService.get_employee_by_mail(data.get('mail'))
+        if not new_employee:
+            new_employee = employeeService.create_employee(data)
+            return new_employee
+        else:
+            return {'error': 'Admin already exists'}
+        
+class authorController:
+    @staticmethod
+    def add_author():
+        data = request.form
+        new_author = authorService.get_author_by_name(data.get('name'))
+        if not new_author:
+            new_author = authorService.add_author(data)
+            return new_author
+        else:
+            return {'error': 'Author already exists'}
+        
+    @staticmethod
+    def update_author():
+        data = request.form
+        author = authorService.get_author_by_name(data.get('name'))
+        if not author:
+            return {'error': 'No author of this name'}
+        else:
+            author = authorService.modify_author(data)
+            return author
+        
+    @staticmethod
+    def delete_author():
+        data = request.form
+        author = authorService.get_author_by_name(data.get('name'))
+        if not author:
+            return {'error': 'No author of this name'}
+        else:
+            authorService.remove_author(author)
+            return author
+
+class vendorController:
+    @staticmethod
+    def add_vendor():
+        data = request.form
+        new_vendor = vendorService.get_vendor_by_name(data.get('name'))
+        if not new_vendor:
+            new_vendor = vendorService.add_vendor(data)
+            return new_vendor
+        else:
+            return {'error': 'Vendor already exists'}
+        
+    @staticmethod
+    def update_vendor():
+        data = request.form
+        vendor = vendorService.get_vendor_by_name(data.get('name'))
+        if not vendor:
+            return {'error': 'No vendor of this name'}
+        else:
+            vendor = vendorService.modify_vendor(data)
+            return vendor
+        
+    @staticmethod
+    def delete_vendor():
+        data = request.form
+        vendor = vendorService.get_vendor_by_name(data.get('name'))
+        if not vendor:
+            return {'error': 'No vendor of this name'}
+        else:
+            vendorService.remove_vendor(vendor)
+            return vendor
+
+    @staticmethod
+    def add_vendor():
+        data = request.form
+        new_vendor = vendorService.get_vendor_by_name(data.get('name'))
+        if not new_vendor:
+            new_vendor = vendorService.add_vendor(data)
+            return new_vendor
+        else:
+            return {'error': 'Vendor already exists'}
+        
+    @staticmethod
+    def update_vendor():
+        data = request.form
+        vendor = vendorService.get_vendor_by_name(data.get('name'))
+        if not vendor:
+            return {'error': 'No vendor of this name'}
+        else:
+            vendor = vendorService.modify_vendor(data)
+            return vendor
+        
+    @staticmethod
+    def delete_vendor():
+        data = request.form
+        vendor = vendorService.get_vendor_by_name(data.get('name'))
+        if not vendor:
+            return {'error': 'No vendor of this name'}
+        else:
+            vendorService.remove_vendor(vendor)
+            return vendor

@@ -3,10 +3,12 @@ from flask import request, Flask
 from utils.utils import db
 from Models.member_model import Members
 from Models.employee_model import Employees
+from Models.author_model import Authors
+from Models.vendor_model import Vendors
 
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
-from flask_login import login_user, logout_user, current_user
+from flask_login import login_user, current_user
 from config import config
 
 
@@ -31,8 +33,10 @@ class userService:
             user = userService.get_member_by_mail(mail)
             if not user:
                 return {'error': 'member not found'}
-        else:
+        elif type == 'admin':
             user = userService.get_employee_by_mail(mail)
+            if not user:
+                return {'error': 'member not found'}
         if user and check_password_hash(user.password_hash, password):
             login_user(user)
             if current_user.is_authenticated:
@@ -62,21 +66,77 @@ class userService:
     def is_allowed(filename):
         return '.' in filename and filename.rsplit('.', 1)[1].lower() in config.ALLOWED_FORMATS
 
-
 class employeeService:
     @staticmethod
     def create_employee(data):
         new_employee = Employees(
             name=data.get('name'),
             mail=data.get('mail'),
-            gender=data.get('gender'),
             date_of_birth=data.get('dob'),
-            password=generate_password_hash(data.get('password')),
-            country=data.get('country'),
-            state=data.get('state'),
-            city=data.get('city'),
-            street=data.get('street'),
+            password_hash=generate_password_hash(data.get('password')),
         )
         db.session.add(new_employee)
         db.session.commit()
         return new_employee
+
+class authorService:
+    @staticmethod
+    def add_author(data):
+        new_author = Authors(
+            name=data.get('name'),
+            dob=data.get('dob'),
+            origin=data.get('origin'),
+            about=data.get('about')
+        )
+        return new_author
+    
+    @staticmethod
+    def get_author_by_name(name):
+        return Authors.query.filter_by(name=name).first()
+    
+    @staticmethod
+    def modify_author(data):
+        updated_author = Authors(
+            name=data.get('name'),
+            dob=data.get('dob'),
+            origin=data.get('origin'),
+            about=data.get('about')
+        )
+        db.session.commit()
+        return updated_author
+    
+    @staticmethod
+    def remove_author(author):
+        db.session.delete(author)
+        db.session.commit()
+        return 
+
+class vendorService:
+    @staticmethod
+    def add_vendor(data):
+        new_vendor = Vendors(
+            name=data.get('name'),
+            address=data.get('address'),
+            about=data.get('about')
+        )
+        return new_vendor
+    
+    @staticmethod
+    def get_vendor_by_name(name):
+        return Vendors.query.filter_by(name=name).first()
+    
+    @staticmethod
+    def modify_vendor(data):
+        updated_vendor = Vendors(
+            name=data.get('name'),
+            address=data.get('address'),
+            about=data.get('about')
+        )
+        db.session.commit()
+        return updated_vendor
+    
+    @staticmethod
+    def remove_vendor(author):
+        db.session.delete(author)
+        db.session.commit()
+        return author
