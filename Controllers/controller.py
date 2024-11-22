@@ -35,3 +35,8 @@ class BookController:
         data = request.json
         new_book = BookService.add_book(data)
         return jsonify(new_book.to_dict()), 201     
+
+class userController():
+    @staticmethod
+    def update_details():
+        return

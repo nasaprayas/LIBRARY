@@ -23,7 +23,7 @@ img {
 
 header {
     display: flex;
-    align-items: justify;
+    align-items: center;
     justify-content: space-between;
     color: #fff;
     height: 7vh;
