@@ -8,6 +8,6 @@ This Library Management Database is designed to efficiently manage the records o
 **Team Members-**      
   Shubhika Sinha-23293916087    
   Garvit Gupta- 23293916021
-  Jhanvi Nagori- 23293916025 
+  Jhanvi Nagori- 23293916025
   Prayas Yadav- 2329391603
 
