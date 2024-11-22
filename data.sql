@@ -72,3 +72,6 @@ INSERT INTO book (book_id, author_id, book_title, publisher_id, vendor_id, shelf
 (23, 6, 'A Tale of Two Cities', 4, 6, 6, 'Classic', 319.99, 'English', 'Drama', 'Historical', '1859-04-30', '2024-12-05', 10, '2024-12-06', '2024-12-04', NULL),
 (24, 7, 'For Whom the Bell Tolls', 5, 7, 7, 'War', 299.99, 'English', 'Drama', 'Historical', '1940-10-21', '2024-01-12', 4, '2024-01-13', '2024-01-11', NULL),
 (25, 8, 'The Death of Ivan Ilyich', 7, 8, 8, 'Philosophy', 199.99, 'Russian', 'Fiction', 'Philosophy', '1886-01-01', '2024-02-20', 5, '2024-02-21', '2024-02-19', NULL);
+
+
+

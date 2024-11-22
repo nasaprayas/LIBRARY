@@ -26,7 +26,7 @@ class SearchController:
     def search_book(book):
         found = SearchService.get_books_by_name_partial(book)
         if not found: 
-            return View.render_error('Book not found'), 404
+            return View.render_error('Sorry, Book not found'), 404
         return View.render_book(found), 200
     
 class BookController:
