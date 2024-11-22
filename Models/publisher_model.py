@@ -2,18 +2,18 @@ from utils.utils import db
 
 class Publishers(db.Model):
     __tablename__ = 'publisher'
-    publisher_id = db.Column(db.Integer, primary_key=True)
-    publisher_name = db.Column(db.String(50), nullable=False)
-    publisher_address = db.Column(db.Text, nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    address = db.Column(db.Text, nullable=False)
     about = db.Column(db.Text)
 
     def __repr__(self):
-        return f"<Publisher {self.publisher_name} - ID: {self.publisher_id}>"
+        return f"<Publisher {self.name} - ID: {self.id}>"
     def to_dict(self):
         """Convert the PublisherModel instance into a dictionary format."""
         return {
-            'publisher_id': self.publisher_id,
-            'publisher_name': self.publisher_name,
-            'publisher_address': self.publisher_address,
+            'publisher_id': self.id,
+            'publisher_name': self.name,
+            'publisher_address': self.address,
             'about':self.about,
         }

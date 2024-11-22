@@ -19,7 +19,7 @@ class Members(flask_login.UserMixin, db.Model):
     type = db.Column(db.String(10), default='member')
 
     def __repr__(self):
-        return f"<Member {self.member_name} - ID: {self.id}>"
+        return f"<Member {self.name} - ID: {self.id}>"
     
     def to_dict(self):
         """Convert the MemberModel instance into a dictionary format."""

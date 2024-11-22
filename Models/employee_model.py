@@ -26,7 +26,7 @@ class Employees(UserMixin,db.Model):
         return {
             'employee_id': self.id,
             'employee_name': self.name,
-            'employee_email': self.employee_email,
+            'employee_email': self.mail,
             'gender': self.gender,
             'date_of_birth': self.date_of_birth.isoformat() if self.date_of_birth else None,
             'date_of_joining': self.date_of_joining.isoformat() if self.date_of_joining else None,

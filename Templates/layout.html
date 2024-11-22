@@ -17,6 +17,7 @@
         <a href="/dashboard">Dashboard</a>
         <a href="/logout">Log Out</a>
         {% elif current_user.is_authenticated and current_user.type == 'admin' %}
+        <a href="/dashboard">dashboard</a>
         <div class="dropdown">
             <button class="dropbtn">Add</button>
             <div class="dropdown-content">
@@ -54,6 +55,7 @@
                 <a href="#">Book Location</a>
             </div>
         </div>
+        <a href="/logout">Log Out</a>
         {% else %}
         <a href="/login">Log In</a>
         <a href="/signup">Sign Up</a>
