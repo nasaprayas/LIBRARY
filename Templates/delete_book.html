@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/delete_book.css') }}">
+{% endblock %}
+{% block content %}
+<main id="main">
+    <form id="delete_book-form" method="POST" enctype="multipart/form-data">
+        <div class="book_icon">
+            <img src="{{  url_for('static', filename='media/icons/deletebook.png')  }}" alt="icon">   
+        </div>
+        <div>
+            <label for="book_title">Book Title:</label>
+            <input type="text" id="book_title" name="book_title" required>
+        </div>
+        <button type="submit">Delete</button>
+    </form>
+</main>
+{% endblock %}

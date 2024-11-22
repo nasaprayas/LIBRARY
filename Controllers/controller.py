@@ -1,7 +1,7 @@
 from flask import request
-from Services.service import userService, SearchService, BookService
+from Services.service import userService, SearchService, BookService, employeeService, authorService, vendorService
 from flask import Blueprint, jsonify, request
-from Views.view import View, employeeService, authorService, vendorService
+from Views.view import View
 from werkzeug.utils import secure_filename
 from flask_login import current_user
 

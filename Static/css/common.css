@@ -62,11 +62,6 @@ svg.nav-button {
     transition: fill 0.2s linear;
 }
 
-.menu_dots {
-    fill: #FFFFFF;
-    transition: all 0.2s linear;
-}
-
 .sidenav {
     height: 100%;
     width: 250px;
@@ -74,7 +69,7 @@ svg.nav-button {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: white;
+    background-color: #12263f; 
     overflow-x: hidden;
     padding-top: 60px;
     transition: width 0.2s linear;
@@ -91,7 +86,7 @@ svg.nav-button {
     text-decoration: none;
     white-space: nowrap;
     font-size: 20px;
-    color: #000000;
+    color: #ffffff;
     display: block;
     border: none;
     background: none;

@@ -41,7 +41,7 @@ def dashboard():
 @bp.route('/add/admin', methods=['POST'])
 def add_empoyee():
     admin = employeeController.add_employee()
-    return
+    return admin
 
 @bp.route('/add_book', methods=['GET', 'POST'])
 def add_book():
@@ -62,3 +62,40 @@ def add_publisher():
 @bp.route('/add_transaction', methods=['GET', 'POST'])
 def add_transaction():
     return render_template('add_transaction.html')
+
+@bp.route('/update_book', methods=['GET', 'POST'])
+def update_book():
+    return render_template('update_book.html')
+
+@bp.route('/update_author', methods=['GET', 'POST'])
+def update_author():
+    return render_template('update_author.html')
+
+@bp.route('/update_vendor', methods=['GET', 'POST'])
+def update_vendor():
+    return render_template('update_vendor.html')
+
+@bp.route('/update_publisher', methods=['GET', 'POST'])
+def update_publisher():
+    return render_template('update_publisher.html')
+
+@bp.route('/update_transaction', methods=['GET', 'POST'])
+def update_transaction():
+    return render_template('update_transaction.html')
+
+@bp.route('/delete_book', methods=['GET', 'POST'])
+def delete_book():
+    return render_template('delete_book.html')
+
+@bp.route('/delete_author', methods=['GET', 'POST'])
+def delete_author():
+    return render_template('delete_author.html')
+
+@bp.route('/delete_vendor', methods=['GET', 'POST'])
+def delete_vendor():
+    return render_template('delete_vendor.html')
+
+@bp.route('/delete_publisher', methods=['GET', 'POST'])
+def delete_publisher():
+    return render_template('delete_publisher.html')
+
