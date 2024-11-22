@@ -1,0 +1,108 @@
+main {
+    display: flex;
+    justify-content: center;
+}
+
+/* Form container styling */
+#delete_book-form {
+    background-color: #12263f; /* Slightly lighter shade than body background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Input and select field styling */
+#delete_book-form input, 
+#delete_book-form select, 
+#delete_book-form button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #1c3a57; /* Border matches the form background */
+    background-color: #16324a; /* Input background matches the theme */
+    color: #e0e0e0;
+    font-size: 14px;
+}
+
+/* Input focus styling */
+#delete_book-form input:focus, 
+#delete_book-form select:focus {
+    outline: none;
+    border-color: #4ea1d3; /* Brighter border for focus */
+    box-shadow: 0px 0px 5px rgba(78, 161, 211, 0.8);
+}
+
+/* Label styling */
+#delete_book-form label {
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    color: #ffffff; /* Keeps labels readable */
+}
+
+/* Button styling */
+#delete_book-form button {
+    background-color: #ce0606; /* Brighter blue for contrast */
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+#delete_book-form button:hover {
+    background-color: #eb0202;
+    box-shadow: 0px 4px 15px rgba(235, 3, 3, 0.532);
+}
+
+/* Dividers between input fields */
+#delete_book-form div {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px !important;
+    height: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 100%;
+    border: 2px solid #1c3a57; /* Border matches the form background */
+    background-color: #16324a; /* Input background matches the theme */
+    color: #e0e0e0;
+    font-size: 14px;
+}
+
+/* Add rounded corners for all elements */
+input, select, button {
+    border-radius: 5px;
+}
+
+div.book_icon img{
+    width: 100%; 
+}
+
+
+
+/* Button styling */
+#update_form-form button {
+    background-color: #e18e00; /* Brighter blue for contrast */
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#update_form-form button:hover {
+    background-color: #ed9600;
+    box-shadow: 0px 4px 15px rgba(235, 107, 3, 0.532);
+}
