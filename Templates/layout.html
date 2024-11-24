@@ -21,19 +21,11 @@
         <div class="dropdown">
             <button class="dropbtn">Add</button>
             <div class="dropdown-content">
-<<<<<<< HEAD
-                <a href="#">Book</a>
-                <a href="#">Vendor</a>
-                <a href="/add_author">Author</a>
-                <a href="#">Publisher</a>
-                <a href="#">Transaction</a>
-=======
                 <a href="/add_book">Book</a>
                 <a href="/add_author">Author</a>
                 <a href="/add_vendor">Vendor</a>
                 <a href="/add_publisher">Publisher</a>
                 <a href="/add_transaction">Transaction</a>
->>>>>>> d5468887c0c15bca7c0b37f3477696b79370e72f
             </div>
         </div>
         <div class="dropdown">
@@ -97,6 +89,8 @@
         <p>Contact us: +91 72380 36936 | Email: thebookarchitects@gmail.com</p>
     </footer>
     <script src="{{  url_for('static', filename='js/navigation.js')  }}"></script>
+    {% block js %}
+    {% endblock %}
 </body>
 
 </html>

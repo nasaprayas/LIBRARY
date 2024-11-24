@@ -100,21 +100,18 @@ class authorService:
         return Authors.query.filter_by(name=name).first()
     
     @staticmethod
-    def modify_author(data):
-        updated_author = Authors(
-            name=data.get('name'),
-            dob=data.get('dob'),
-            origin=data.get('origin'),
-            about=data.get('about')
-        )
+    def modify_author(author, data):
+        author.dob=data.get('dob'),
+        author.origin=data.get('origin'),
+        author.about=data.get('about')
         db.session.commit()
-        return updated_author
+        return author
     
     @staticmethod
     def remove_author(author):
         db.session.delete(author)
         db.session.commit()
-        return 
+        return author
 
 class vendorService:
     @staticmethod
@@ -124,6 +121,8 @@ class vendorService:
             address=data.get('address'),
             about=data.get('about')
         )
+        db.session.add(new_vendor)
+        db.session.commit()
         return new_vendor
     
     @staticmethod
@@ -131,40 +130,66 @@ class vendorService:
         return Vendors.query.filter_by(name=name).first()
     
     @staticmethod
-    def modify_vendor(data):
-        updated_vendor = Vendors(
+    def modify_vendor(vendor, data):
+        vendor.name=data.get('name'),
+        vendor.address=data.get('address'),
+        vendor.about=data.get('about')
+        db.session.commit()
+        return vendor
+    
+    @staticmethod
+    def remove_vendor(vendor):
+        db.session.delete(vendor)
+        db.session.commit()
+        return vendor
+    
+class publisherService:
+    @staticmethod
+    def add_publisher(data):
+        new_publisher = Publishers(
             name=data.get('name'),
             address=data.get('address'),
             about=data.get('about')
         )
+        db.session.add(new_publisher)
         db.session.commit()
-        return updated_vendor
+        return new_publisher
     
     @staticmethod
-    def remove_vendor(author):
-        db.session.delete(author)
+    def get_publisher_by_name(name):
+        return Publishers.query.filter_by(name=name).first()
+    
+    @staticmethod
+    def modify_publisher(publisher, data):
+        publisher.name=data.get('name'),
+        publisher.address=data.get('address'),
+        publisher.about=data.get('about')
         db.session.commit()
-        return author
+        return publisher
     
-    
+    @staticmethod
+    def remove_publisher(publisher):
+        db.session.delete(publisher)
+        db.session.commit()
+        return publisher
+
 class SearchService:
     def get_books_by_name_partial(book_title):
-        books = Books.query.filter(Books.name.ilike(f"%{book_title}%")).all()
+        books = Books.query.filter(Books.title.ilike(f"%{book_title}%")).all()
         return [book.to_dict() for book in books] if books else []
     
 class BookService:
     def add_book(data):
         new_book = Books(
-            book_id=data.get('book_id'),
-            author_id=data.get('author_id'),
-            book_title=data.get('book_title'),
-            publisher_id=data.get('publisher_id'),
-            vendor_id=data.get('vendor_id'),
+            author_id=authorService.get_author_by_name(data.get('author_name')).id,
+            title=data.get('title'),
+            publisher_id=publisherService.get_publisher_by_name(data.get('publisher_name')).id,
+            vendor_id=vendorService.get_vendor_by_name(data.get('vendor_name')).id,
             shelf_id=data.get('shelf_id'),
             category=data.get('category'),
             price=data.get('price'),
-            language_name=data.get('language_name'),
-            subject_name=data.get('subject_name'),
+            language=data.get('language'),
+            subject=data.get('subject'),
             genre=data.get('genre'),
             date_of_publishing=data.get('date_of_publishing'),
             date_of_addition=data.get('date_of_addition'),
@@ -176,7 +201,3 @@ class BookService:
         db.session.add(new_book)
         db.session.commit()
         return new_book
-
-    
-
-    

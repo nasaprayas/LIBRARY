@@ -1,5 +1,5 @@
 from flask import request
-from Services.service import userService, SearchService, BookService, employeeService, authorService, vendorService
+from Services.service import userService, SearchService, BookService, employeeService, authorService, vendorService, publisherService
 from flask import Blueprint, jsonify, request
 from Views.view import View
 from werkzeug.utils import secure_filename
@@ -30,10 +30,7 @@ class authenticaionController:
 class SearchController:
     @staticmethod
     def search_book(book):
-        found = SearchService.get_books_by_name_partial(book)
-        if not found: 
-            return View.render_error('Sorry, Book not found'), 404
-        return View.render_book(found), 200
+        return SearchService.get_books_by_name_partial(book)
     
 class BookController:
     @staticmethod
@@ -82,7 +79,7 @@ class authorController:
         new_author = authorService.get_author_by_name(data.get('name'))
         if not new_author:
             new_author = authorService.add_author(data)
-            return new_author
+            return new_author.to_dict()
         else:
             return {'error': 'Author already exists'}
         
@@ -93,8 +90,8 @@ class authorController:
         if not author:
             return {'error': 'No author of this name'}
         else:
-            author = authorService.modify_author(data)
-            return author
+            author = authorService.modify_author(author, data)
+            return author.to_dict()
         
     @staticmethod
     def delete_author():
@@ -103,8 +100,8 @@ class authorController:
         if not author:
             return {'error': 'No author of this name'}
         else:
-            authorService.remove_author(author)
-            return author
+            author = authorService.remove_author(author)
+            return author.to_dict()
 
 class vendorController:
     @staticmethod
@@ -113,7 +110,7 @@ class vendorController:
         new_vendor = vendorService.get_vendor_by_name(data.get('name'))
         if not new_vendor:
             new_vendor = vendorService.add_vendor(data)
-            return new_vendor
+            return new_vendor.to_dict()
         else:
             return {'error': 'Vendor already exists'}
         
@@ -124,8 +121,8 @@ class vendorController:
         if not vendor:
             return {'error': 'No vendor of this name'}
         else:
-            vendor = vendorService.modify_vendor(data)
-            return vendor
+            vendor = vendorService.modify_vendor(vendor, data)
+            return vendor.to_dict()
         
     @staticmethod
     def delete_vendor():
@@ -134,35 +131,36 @@ class vendorController:
         if not vendor:
             return {'error': 'No vendor of this name'}
         else:
-            vendorService.remove_vendor(vendor)
-            return vendor
+            vendor = vendorService.remove_vendor(vendor)
+            return vendor.to_dict()
 
+class publisherController:
     @staticmethod
-    def add_vendor():
+    def add_publisher():
         data = request.form
-        new_vendor = vendorService.get_vendor_by_name(data.get('name'))
-        if not new_vendor:
-            new_vendor = vendorService.add_vendor(data)
-            return new_vendor
+        new_publisher = publisherService.get_publisher_by_name(data.get('name'))
+        if not new_publisher:
+            new_publisher = publisherService.add_publisher(data)
+            return new_publisher.to_dict()
         else:
-            return {'error': 'Vendor already exists'}
+            return {'error': 'Publisher already exists'}
         
     @staticmethod
-    def update_vendor():
+    def update_publisher():
         data = request.form
-        vendor = vendorService.get_vendor_by_name(data.get('name'))
-        if not vendor:
-            return {'error': 'No vendor of this name'}
+        publisher = publisherService.get_publisher_by_name(data.get('name'))
+        if not publisher:
+            return {'error': 'No publisher of this name'}
         else:
-            vendor = vendorService.modify_vendor(data)
-            return vendor
+            publisher = publisherService.modify_publisher(publisher, data)
+            return publisher.to_dict()
         
     @staticmethod
-    def delete_vendor():
+    def delete_publisher():
         data = request.form
-        vendor = vendorService.get_vendor_by_name(data.get('name'))
-        if not vendor:
-            return {'error': 'No vendor of this name'}
+        publisher = publisherService.get_publisher_by_name(data.get('name'))
+        if not publisher:
+            return {'error': 'No publisher of this name'}
         else:
-            vendorService.remove_vendor(vendor)
-            return vendor
+            publisher = publisherService.remove_publisher(publisher)
+            return publisher.to_dict()

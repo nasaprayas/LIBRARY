@@ -9,15 +9,15 @@
             <img src="{{  url_for('static', filename='media/icons/addtransaction.png')  }}" alt="icon">   
         </div>
         <div>
-            <label for="transaction_type">Transaction Type:</label>
-            <select id="transaction_type" name="transaction_type">
+            <label for="type">Transaction Type:</label>
+            <select id="transaction_type" name="type">
                 <option value = "" selected hidden>Not Selected</option>
                 <option value = "issue">Issue</option>
                 <option value = "return">Return</option>
             </select>
         </div>
         <div>
-            <label for="transaction_date">Transaction Date: </label>
+            <label for="date">Transaction Date: </label>
             <input type="date" id="transaction_date" name="transaction_date" required>
         </div>
         <div>
