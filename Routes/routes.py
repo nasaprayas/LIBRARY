@@ -85,7 +85,12 @@ def add_transaction():
 
 @bp.route('/update_book', methods=['GET', 'POST'])
 def update_book():
-    return render_template('update_book.html')
+    if request.method == 'POST':
+        book = BookController.update_book()
+        if 'error' in book:
+            return render_template('update_book.html', error=book['error'])
+        return render_template('update_book.html', error='')
+    return render_template('update_book.html', error='')
 
 @bp.route('/update_author', methods=['GET', 'POST'])
 def update_author():
@@ -120,7 +125,12 @@ def update_transaction():
 
 @bp.route('/delete_book', methods=['GET', 'POST'])
 def delete_book():
-    return render_template('delete_book.html')
+    if request.method == 'POST':
+        book = BookController.delete_book()
+        if 'error' in book:
+            return render_template('delete_book.html', error=book['error'])
+        return render_template('delete_book.html', error='')
+    return render_template('delete_book.html', error='')
 
 @bp.route('/delete_author', methods=['GET', 'POST'])
 def delete_author():

@@ -214,3 +214,24 @@ class BookService:
     @staticmethod
     def is_allowed(filename):
         return '.' in filename and filename.rsplit('.', 1)[1].lower() in config.ALLOWED_FORMATS
+    
+    @staticmethod
+    def update_book(book, data):
+        book.title=data.get('title')
+        book.preface=data.get('preface')
+        book.publisher_id=publisherService.get_publisher_by_name(data.get('publisher_name')).id
+        book.vendor_id=vendorService.get_vendor_by_name(data.get('vendor_name')).id,
+        book.shelf_id=data.get('shelf_id')
+        book.price=data.get('price')
+        book.availability=data.get('availability')
+        book.date_of_publishing=data.get('date_of_publishing')
+        book.shelf_date=data.get('shelf_date')
+        book.bought_on=data.get('bought_on')
+        db.session.commit()
+        return book
+    
+    @staticmethod
+    def remove_book(book):
+        db.session.delete(book)
+        db.session.commit()
+        return book

@@ -39,7 +39,7 @@ class BookController:
         file = request.files['cover_page']
         if not file.filename:
             cover = None
-        elif not userService.is_allowed(file.filename):
+        elif not BookService.is_allowed(file.filename):
             return {'error': 'file type not compatible, upload gif, jpg, jpeg or png'}
         else:
             cover = secure_filename(file.filename)
@@ -49,7 +49,27 @@ class BookController:
             new_book = BookService.add_book(data, cover)
             return new_book.to_dict()
         else:
-            return {'error': 'Author already exists'}
+            return {'error': 'Book already exists'}
+        
+    @staticmethod
+    def update_book():
+        data = request.form
+        book = BookService.get_book_by_title(data.get('title'))
+        if not book:
+            return {'error': 'No book of this title'}
+        else:
+            book = BookService.update_book(book, data)
+            return book.to_dict()
+        
+    @staticmethod
+    def delete_book():
+        data = request.form
+        book = BookService.get_book_by_title(data.get('title'))
+        if not book:
+            return {'error': 'No book of this title'}
+        else:
+            book = BookService.remove_book(book)
+            return book.to_dict()
 
 class userController:
     @staticmethod
