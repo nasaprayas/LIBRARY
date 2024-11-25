@@ -91,6 +91,8 @@ class authorService:
             origin=data.get('origin'),
             about=data.get('about')
         )
+        db.session.add(new_author)
+        db.session.commit()
         return new_author
     
     @staticmethod
@@ -98,21 +100,18 @@ class authorService:
         return Authors.query.filter_by(name=name).first()
     
     @staticmethod
-    def modify_author(data):
-        updated_author = Authors(
-            name=data.get('name'),
-            dob=data.get('dob'),
-            origin=data.get('origin'),
-            about=data.get('about')
-        )
+    def modify_author(author, data):
+        author.dob=data.get('dob'),
+        author.origin=data.get('origin'),
+        author.about=data.get('about')
         db.session.commit()
-        return updated_author
+        return author
     
     @staticmethod
     def remove_author(author):
         db.session.delete(author)
         db.session.commit()
-        return 
+        return author
 
 class vendorService:
     @staticmethod
@@ -122,6 +121,8 @@ class vendorService:
             address=data.get('address'),
             about=data.get('about')
         )
+        db.session.add(new_vendor)
+        db.session.commit()
         return new_vendor
     
     @staticmethod
@@ -129,52 +130,108 @@ class vendorService:
         return Vendors.query.filter_by(name=name).first()
     
     @staticmethod
-    def modify_vendor(data):
-        updated_vendor = Vendors(
+    def modify_vendor(vendor, data):
+        vendor.name=data.get('name'),
+        vendor.address=data.get('address'),
+        vendor.about=data.get('about')
+        db.session.commit()
+        return vendor
+    
+    @staticmethod
+    def remove_vendor(vendor):
+        db.session.delete(vendor)
+        db.session.commit()
+        return vendor
+    
+class publisherService:
+    @staticmethod
+    def add_publisher(data):
+        new_publisher = Publishers(
             name=data.get('name'),
             address=data.get('address'),
             about=data.get('about')
         )
+        db.session.add(new_publisher)
         db.session.commit()
-        return updated_vendor
+        return new_publisher
     
     @staticmethod
-    def remove_vendor(author):
-        db.session.delete(author)
+    def get_publisher_by_name(name):
+        return Publishers.query.filter_by(name=name).first()
+    
+    @staticmethod
+    def modify_publisher(publisher, data):
+        publisher.name=data.get('name'),
+        publisher.address=data.get('address'),
+        publisher.about=data.get('about')
         db.session.commit()
-        return author
+        return publisher
     
-    
+    @staticmethod
+    def remove_publisher(publisher):
+        db.session.delete(publisher)
+        db.session.commit()
+        return publisher
+
 class SearchService:
     def get_books_by_name_partial(book_title):
-        books = Books.query.filter(Books.name.ilike(f"%{book_title}%")).all()
+        books = Books.query.filter(Books.title.ilike(f"%{book_title}%")).all()
         return [book.to_dict() for book in books] if books else []
     
 class BookService:
-    def add_book(data):
+    def add_book(data, cover_page):
         new_book = Books(
-            book_id=data.get('book_id'),
-            author_id=data.get('author_id'),
-            book_title=data.get('book_title'),
-            publisher_id=data.get('publisher_id'),
-            vendor_id=data.get('vendor_id'),
+            title=data.get('title'),
+            preface=data.get('preface'),
+            author_id=authorService.get_author_by_name(data.get('author_name')).id,
+            publisher_id=publisherService.get_publisher_by_name(data.get('publisher_name')).id,
+            vendor_id=vendorService.get_vendor_by_name(data.get('vendor_name')).id,
             shelf_id=data.get('shelf_id'),
+            language=data.get('language'),
+            subject=data.get('subject'),
             category=data.get('category'),
-            price=data.get('price'),
-            language_name=data.get('language_name'),
-            subject_name=data.get('subject_name'),
             genre=data.get('genre'),
-            date_of_publishing=data.get('date_of_publishing'),
-            date_of_addition=data.get('date_of_addition'),
+            price=data.get('price'),
             availability=data.get('availability'),
+            date_of_publishing=data.get('date_of_publishing'),
             shelf_date=data.get('shelf_date'),
             bought_on=data.get('bought_on'),
-            cover_page =request.form.get('cover_page')
+            cover_page=cover_page
         )
         db.session.add(new_book)
         db.session.commit()
         return new_book
-
     
-
+    @staticmethod
+    def get_book_by_title(title):
+        return Books.query.filter_by(title=title).first()
     
+    @staticmethod
+    def upload_book_cover(file):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(config.COVER_UPLOAD_FOLDER, filename))
+
+    @staticmethod
+    def is_allowed(filename):
+        return '.' in filename and filename.rsplit('.', 1)[1].lower() in config.ALLOWED_FORMATS
+    
+    @staticmethod
+    def update_book(book, data):
+        book.title=data.get('title')
+        book.preface=data.get('preface')
+        book.publisher_id=publisherService.get_publisher_by_name(data.get('publisher_name')).id
+        book.vendor_id=vendorService.get_vendor_by_name(data.get('vendor_name')).id,
+        book.shelf_id=data.get('shelf_id')
+        book.price=data.get('price')
+        book.availability=data.get('availability')
+        book.date_of_publishing=data.get('date_of_publishing')
+        book.shelf_date=data.get('shelf_date')
+        book.bought_on=data.get('bought_on')
+        db.session.commit()
+        return book
+    
+    @staticmethod
+    def remove_book(book):
+        db.session.delete(book)
+        db.session.commit()
+        return book

@@ -8,7 +8,7 @@
         <div class="profile">
             <label for="profile_pic"><img 
                 {% if not current_user.profile_pic %}
-                src="{{  url_for('static', filename='media/profile_pics/default.png')  }}"
+                src="{{  url_for('static', filename='media/icons/default.png')  }}"
                 {% else %}
                 src="/static/media/profile_pics/{{pfp}}"
                 {% endif %} 

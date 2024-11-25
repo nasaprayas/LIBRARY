@@ -12,16 +12,18 @@
         {% endif %}
         <div class="search-box">
             <form>
-                <input type="text" id="searchInput" placeholder="Search for a book" name="search">
-                <button type="submit"><img class="search-icon"
-                        src="{{  url_for('static', filename='media/icons/search_icon.png')  }}" alt=""></button>
+                <input type="text" id="searchInput" placeholder="Search for a book" name="search" >
             </form>
         </div>
+        <p id="prompt"></p>
     </section>
-    <section class="book-display">
+    <section class="book-display" id="results">
     </section>
     <section class="bg-image">
         <img src="{{  url_for('static', filename='media/backgrounds/login_signup_home.png')  }}" alt="">
     </section>
 </main>
+{% endblock %}
+{% block js %}
+<script src="{{ url_for('static', filename='js/home_page.js') }}"></script>
 {% endblock %}

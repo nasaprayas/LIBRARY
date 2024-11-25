@@ -73,6 +73,8 @@ svg.nav-button {
     overflow-x: hidden;
     padding-top: 60px;
     transition: width 0.2s linear;
+    border-radius: 0px 10px 10px 0px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .disappear {
@@ -83,6 +85,7 @@ svg.nav-button {
 .sidenav a,
 .dropbtn {
     padding: 6px 8px 6px 16px;
+    border-radius: 0px;
     text-decoration: none;
     white-space: nowrap;
     font-size: 20px;
