@@ -9,7 +9,7 @@ class Books(db.Model):
     __tablename__ = 'book'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), nullable=False)
-    preface = db.Column(db.Text, nullable=False)
+    preface = db.Column(db.Text)
     author_id = db.Column(db.Integer, db.ForeignKey('author.id', onupdate="CASCADE"), nullable=False)
     publisher_id = db.Column(db.Integer, db.ForeignKey('publisher.id', onupdate="CASCADE"), nullable=False)
     vendor_id = db.Column(db.Integer, db.ForeignKey('vendor.id', onupdate="CASCADE"), nullable=False)
