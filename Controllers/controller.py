@@ -35,9 +35,21 @@ class SearchController:
 class BookController:
     @staticmethod
     def add_book():
-        data = request.json
-        new_book = BookService.add_book(data)
-        return jsonify(new_book.to_dict()), 201     
+        data = request.form
+        file = request.files['cover_page']
+        if not file.filename:
+            cover = None
+        elif not userService.is_allowed(file.filename):
+            return {'error': 'file type not compatible, upload gif, jpg, jpeg or png'}
+        else:
+            cover = secure_filename(file.filename)
+            BookService.upload_book_cover(file=file)
+        new_book = BookService.get_book_by_title(data.get('title'))
+        if not new_book:
+            new_book = BookService.add_book(data, cover)
+            return new_book.to_dict()
+        else:
+            return {'error': 'Author already exists'}
 
 class userController:
     @staticmethod
@@ -47,7 +59,7 @@ class userController:
         if not file.filename:
             pfp = current_user.profile_pic
         elif not userService.is_allowed(file.filename):
-            return {'error': 'file type not compatible, upload gif, jpg or jpeg'}
+            return {'error': 'file type not compatible, upload gif, jpg, jpeg or png'}
         else:
             pfp = secure_filename(file.filename)
             userService.upload_profile_pic(file)

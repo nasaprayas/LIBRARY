@@ -45,7 +45,12 @@ def add_empoyee():
 
 @bp.route('/add_book', methods=['GET', 'POST'])
 def add_book():
-    return render_template('add_book.html')
+    if request.method == 'POST':
+        book = BookController.add_book()
+        if 'error' in book:
+            return render_template('add_book.html', error=book['error'])
+        return render_template('add_book.html', error='')
+    return render_template('add_book.html', error='')
 
 @bp.route('/add_author', methods=['GET', 'POST'])
 def add_author():

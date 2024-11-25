@@ -179,25 +179,38 @@ class SearchService:
         return [book.to_dict() for book in books] if books else []
     
 class BookService:
-    def add_book(data):
+    def add_book(data, cover_page):
         new_book = Books(
-            author_id=authorService.get_author_by_name(data.get('author_name')).id,
             title=data.get('title'),
+            preface=data.get('preface'),
+            author_id=authorService.get_author_by_name(data.get('author_name')).id,
             publisher_id=publisherService.get_publisher_by_name(data.get('publisher_name')).id,
             vendor_id=vendorService.get_vendor_by_name(data.get('vendor_name')).id,
             shelf_id=data.get('shelf_id'),
-            category=data.get('category'),
-            price=data.get('price'),
             language=data.get('language'),
             subject=data.get('subject'),
+            category=data.get('category'),
             genre=data.get('genre'),
-            date_of_publishing=data.get('date_of_publishing'),
-            date_of_addition=data.get('date_of_addition'),
+            price=data.get('price'),
             availability=data.get('availability'),
+            date_of_publishing=data.get('date_of_publishing'),
             shelf_date=data.get('shelf_date'),
             bought_on=data.get('bought_on'),
-            cover_page =request.form.get('cover_page')
+            cover_page=cover_page
         )
         db.session.add(new_book)
         db.session.commit()
         return new_book
+    
+    @staticmethod
+    def get_book_by_title(title):
+        return Books.query.filter_by(title=title).first()
+    
+    @staticmethod
+    def upload_book_cover(file):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(config.COVER_UPLOAD_FOLDER, filename))
+
+    @staticmethod
+    def is_allowed(filename):
+        return '.' in filename and filename.rsplit('.', 1)[1].lower() in config.ALLOWED_FORMATS

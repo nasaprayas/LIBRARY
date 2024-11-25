@@ -14,9 +14,11 @@
 <body>
     <nav class="sidenav disappear" id="side_nav">
         {% if current_user.is_authenticated and current_user.type == 'member' %}
+        <a href="/home_page">Home</a>
         <a href="/dashboard">Dashboard</a>
         <a href="/logout">Log Out</a>
         {% elif current_user.is_authenticated and current_user.type == 'admin' %}
+        <a href="/home_page">Home</a>
         <a href="/dashboard">Dashboard</a>
         <div class="dropdown">
             <button class="dropbtn">Add</button>
@@ -57,6 +59,7 @@
         </div>
         <a href="/logout">Log Out</a>
         {% else %}
+        <a href="/home_page">Home</a>
         <a href="/login">Log In</a>
         <a href="/signup">Sign Up</a>
         {% endif %}
