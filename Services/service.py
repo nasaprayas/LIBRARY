@@ -235,3 +235,8 @@ class BookService:
         db.session.delete(book)
         db.session.commit()
         return book
+    
+    @staticmethod
+    def get_book_by_id(book_id):
+        book = Books.query.filter_by(id=book_id).first()
+        return book.to_dict()

@@ -1,4 +1,4 @@
-INSERT INTO author (author_id, author_name, author_dob, author_origin, about) VALUES
+INSERT INTO author (id, name, dob, origin, about) VALUES
 (1, 'J.K. Rowling', '1965-07-31', 'United Kingdom', 'Author of Harry Potter series'),
 (2, 'George Orwell', '1903-06-25', 'India', 'Author of 1984 and Animal Farm'),
 (3, 'Agatha Christie', '1890-09-15', 'United Kingdom', 'Queen of Mystery novels'),
@@ -10,7 +10,7 @@ INSERT INTO author (author_id, author_name, author_dob, author_origin, about) VA
 (9, 'Gabriel García Márquez', '1927-03-06', 'Colombia', 'Author of One Hundred Years of Solitude'),
 (10, 'F. Scott Fitzgerald', '1896-09-24', 'United States', 'Author of The Great Gatsby');
 
-INSERT INTO publisher (publisher_id, publisher_name, publisher_address, about) VALUES
+INSERT INTO publisher (id, name, address, about) VALUES
 (1, 'Penguin Random House', 'New York, USA', 'Leading global publisher'),
 (2, 'HarperCollins', 'New York, USA', 'Publisher of fiction and non-fiction'),
 (3, 'Macmillan Publishers', 'London, UK', 'One of the largest publishing companies'),
@@ -22,7 +22,7 @@ INSERT INTO publisher (publisher_id, publisher_name, publisher_address, about) V
 (9, 'Bloomsbury Publishing', 'London, UK', 'Known for publishing Harry Potter'),
 (10, 'Pearson Education', 'London, UK', 'Publisher of academic and educational books');
 
-INSERT INTO shelf (shelf_id, quantity, shelf_floor, shelf_rows, shelf_cols) VALUES
+INSERT INTO shelf (id, quantity, floor, no_of_rows, no_of_cols) VALUES
 (1, 100, 1, 10, 10),
 (2, 80, 1, 8, 10),
 (3, 120, 2, 12, 10),
@@ -34,7 +34,7 @@ INSERT INTO shelf (shelf_id, quantity, shelf_floor, shelf_rows, shelf_cols) VALU
 (9, 95, 5, 9, 10),
 (10, 105, 5, 10, 10);
 
-INSERT INTO vendor (vendor_id, vendor_name, vendor_address, about) VALUES
+INSERT INTO vendor (id, name, address, about) VALUES
 (1, 'BookWorld', 'Delhi, India', 'Vendor for all genres of books'),
 (2, 'Literature Hub', 'Mumbai, India', 'Specialized in novels and literature'),
 (3, 'Education Plus', 'Pune, India', 'Deals in educational books'),
@@ -46,7 +46,7 @@ INSERT INTO vendor (vendor_id, vendor_name, vendor_address, about) VALUES
 (9, 'Academic Sources', 'Lucknow, India', 'Focused on academic publications'),
 (10, 'Art & Design', 'Jaipur, India', 'Vendor for art and design books');
 
-INSERT INTO book (book_id, author_id, book_title, publisher_id, vendor_id, shelf_id, category, price, language_name, subject_name, genre, date_of_publishing, date_of_addition, availability, shelf_date, bought_on, cover_page) VALUES
+INSERT INTO book (id, author_id, title, publisher_id, vendor_id, shelf_id, category, price, language, subject, genre, date_of_publishing, date_of_addition, availability, shelf_date, bought_on, cover_page) VALUES
 (1, 1, 'Harry Potter and the Philosopher\'s Stone', 9, 1, 1, 'Fiction', 399.99, 'English', 'Fantasy', 'Fantasy', '1997-06-26', '2024-01-15', 10, '2024-01-16', '2024-01-14', NULL),
 (2, 2, '1984', 2, 2, 2, 'Dystopian', 299.99, 'English', 'Fiction', 'Dystopian', '1949-06-08', '2024-02-12', 5, '2024-02-13', '2024-02-11', NULL),
 (3, 3, 'Murder on the Orient Express', 1, 3, 3, 'Mystery', 199.99, 'English', 'Detective', 'Mystery', '1934-01-01', '2024-03-10', 8, '2024-03-11', '2024-03-09', NULL),

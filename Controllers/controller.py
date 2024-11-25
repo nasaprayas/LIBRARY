@@ -70,6 +70,10 @@ class BookController:
         else:
             book = BookService.remove_book(book)
             return book.to_dict()
+        
+    @staticmethod
+    def book_view(book_id):
+        return BookService.get_book_by_id(book_id)
 
 class userController:
     @staticmethod
