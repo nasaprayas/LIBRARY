@@ -6,7 +6,7 @@ bp = Blueprint('bp', __name__)
 
 @bp.route('/home_page', methods=['GET','POST'])
 def home_page():
-    return render_template('home_page.html')
+    return render_template('home_page.html', current_user=current_user)
 
 @bp.route('/login', methods=['GET','POST'])
 def login():

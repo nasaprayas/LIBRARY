@@ -23,7 +23,7 @@ class authenticaionController:
     def login():
         mail = request.form.get('email')
         password = request.form.get('password')
-        type = request.form.get('user_type')
+        type = request.form.get('type')
         result = userService.log_in(mail=mail, password=password,type=type)
         return result
     
@@ -104,7 +104,7 @@ class employeeController:
         new_employee = userService.get_employee_by_mail(data.get('mail'))
         if not new_employee:
             new_employee = employeeService.create_employee(data)
-            return new_employee
+            return new_employee.to_dict()
         else:
             return {'error': 'Admin already exists'}
         

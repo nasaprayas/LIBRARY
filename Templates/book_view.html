@@ -3,11 +3,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/book_view.css') }}">
 {% endblock %}
 {% block content %}
-<div class="container">
-    <header class="header">
-        <h1>Hey <span class="username">{{current_user.name}}</span></h1>
-    </header>
-
+<div class="container" id="main">
     <main class="book-details">
         <div class="book-cover">
             <img src="/static/media/book_covers/{{book['cover_page']}}" alt="Book Cover">
