@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view_location.css') }}">
+{% endblock %}
+{% block content %}
+<main id="main">
+    <form id="location-form" method="POST" enctype="multipart/form-data">
+        <div class="book_icon">
+            <img src="{{  url_for('static', filename='media/icons/find_book.png')  }}" alt="icon">   
+        </div>
+        <div>
+            <label for="book_title">Book Title:</label>
+            <input type="text" id="book_title" name="title" required>
+            <ul id="suggestionList">
+            </ul>
+        </div>
+        <div>
+            <label for="author_name">Author:</label>
+            <input type="text" id="author_name" name="name" required>
+        </div>
+        <button type="view">Here is Your Location</button>
+        <div>
+            <label for="shelf_id">Find Here:</label>
+            <input type="text" id="shelf_id" name="name" readonly>
+        </div>
+    </form>
+</main>
+{% endblock %}
+{% block js %}
+<script src="{{ url_for('static', filename='js/view_location.js') }}"></script>
+{% endblock %}

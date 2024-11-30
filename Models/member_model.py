@@ -24,9 +24,9 @@ class Members(flask_login.UserMixin, db.Model):
     def to_dict(self):
         """Convert the MemberModel instance into a dictionary format."""
         return {
-            'member_id': self.id,
-            'member_name': self.name,
-            'member_email': self.mail,
+            'id': self.id,
+            'name': self.name,
+            'mail': self.mail,
             'date_of_birth': self.date_of_birth.isoformat() if self.date_of_birth else None,
             'gender': self.gender,
             'date_of_joining': self.date_of_joining.isoformat() if self.date_of_joining else None,

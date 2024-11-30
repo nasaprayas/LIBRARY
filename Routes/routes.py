@@ -169,3 +169,16 @@ def search_book():
 def book_view(book_id):
     book = BookController.book_view(book_id)
     return render_template('book_view.html', book=book)
+
+@bp.route('/view_history', methods=['GET'])
+def view_history():
+    return render_template('view_history.html')
+
+@bp.route('/view_all_members', methods=['GET'])
+def view_all_members():
+    list = userController.get_users()
+    return render_template('all_members.html', members=list)
+
+@bp.route('/view_location', methods=['GET'])
+def view_location():
+    return render_template('view_location.html')

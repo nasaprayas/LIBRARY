@@ -1,0 +1,51 @@
+/* Container */
+.container {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* member Section */
+.member-section {
+    background-color: #12263f;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h2 {
+    color: #ffffff;
+    font-size: 1.8rem;
+}
+
+/* Table Styling */
+.member-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.member-table th, .member-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.member-table th {
+    background-color: #0d1a2c;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.member-table td {
+    font-size: 1rem;
+    color: white;
+}
+
+.member-table tr:hover {
+    background-color: #7a8da1;
+}

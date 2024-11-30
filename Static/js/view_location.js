@@ -1,13 +1,6 @@
 const searchInput = document.getElementById('book_title');
-const preface = document.getElementById('book_preface');
-const publisher = document.getElementById('publisher_name');
-const vendor = document.getElementById('vendor_name');
+const author = document.getElementById('author_name');
 const shelf = document.getElementById('shelf_id');
-const price = document.getElementById('price');
-const availability = document.getElementById('availability');
-const dop = document.getElementById('date_of_publishing');
-const dos = document.getElementById('shelf_date');
-const dob = document.getElementById('bought_on');
 const suggestionList = document.getElementById('suggestionList');
 
 searchInput.addEventListener('input', async (e) => {
@@ -22,15 +15,8 @@ searchInput.addEventListener('input', async (e) => {
                 li.textContent = suggestion.title;
                 li.addEventListener('click', () => {
                     searchInput.value = suggestion.title;
-                    preface.value = suggestion.preface;
-                    publisher.value = suggestion.publisher;
-                    vendor.value = suggestion.vendor;
-                    shelf.value = suggestion.shelf_id;
-                    price.value = suggestion.price;
-                    availability.value = suggestion.availability;
-                    dop.value = suggestion.date_of_publishing;
-                    dos.value = suggestion.shelf_date;
-                    dob.value = suggestion.bought_on;
+                    author.value = suggestion.author;
+                    shelf_id.value = suggestion.shelf_id;
                     suggestionList.innerHTML = ''; // Clear suggestions
                 });
                 suggestionList.appendChild(li);
@@ -43,3 +29,4 @@ searchInput.addEventListener('input', async (e) => {
         suggestionList.innerHTML = ''; // Clear suggestions
     }
 });
+

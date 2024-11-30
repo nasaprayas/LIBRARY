@@ -16,6 +16,9 @@
         {% if current_user.is_authenticated and current_user.type == 'member' %}
         <a href="/home_page">Home</a>
         <a href="/dashboard">Dashboard</a>
+        <a href="/home_page">Search a Book</a>
+        <a href="/view_history">View History</a>
+        <a href="/view_location">Find Book</a>
         <a href="/logout">Log Out</a>
         {% elif current_user.is_authenticated and current_user.type == 'admin' %}
         <a href="/home_page">Home</a>
@@ -52,9 +55,9 @@
         <div class="dropdown">
             <button class="dropbtn">View</button>
             <div class="dropdown-content">
-                <a href="#">Transaction</a>
-                <a href="#">User</a>
-                <a href="#">Book Location</a>
+                <a href="/view_history">Transaction History</a>
+                <a href="/view_all_members">View all Members</a>
+                <a href="/view_location">Find Book</a>
             </div>
         </div>
         <a href="/logout">Log Out</a>

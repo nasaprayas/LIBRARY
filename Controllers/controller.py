@@ -97,6 +97,12 @@ class userController:
                                                street=data['street'])
         return updated_user
     
+    @staticmethod
+    def get_users():
+        users = userService.get_all_members()
+        user_list = [user.to_dict() for user in users]
+        return user_list
+    
 class employeeController:
     @staticmethod
     def add_employee():

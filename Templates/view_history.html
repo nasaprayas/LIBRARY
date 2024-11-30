@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view_history.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container" id="main">
+    <main>
+        <div class="container">
+            <section class="transaction-section">
+                <div class="header">
+                    <h2>View Transactions</h2>
+                    <h3>{{ current_user.name }}, Your Issued Books</h3>
+                </div>
+                <table class="transaction-table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Date</th>
+                            <th>Book Title</th>
+                            <th>Author</th>
+                            <th>Type</th>
+                            <th>Issued To</th>
+                            <th>Issued By</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>2024-11-30</td>
+                            <td>Book Title 1</td>
+                            <td>Author 1</td>
+                            <td>issue</td>
+                            <td>Issued Member</td>
+                            <td>Issuing Employee</td>
+                            <td>Status</td>
+        
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+</div>
+{% endblock %}

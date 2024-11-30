@@ -33,7 +33,7 @@
 
 .book-title {
     font-size: 2.2rem;
-    color: #ffcc00; /* Gold */
+    color: #52bdb9; /* Gold */
     margin-bottom: 10px;
 }
 
@@ -61,7 +61,7 @@
     margin-bottom: 10px;
     font-size: 1.4rem;
     color: #ffffff;
-    border-bottom: 2px solid #ffcc00;
+    border-bottom: 2px solid #52bdb9;
     padding-bottom: 5px;
 }
 
@@ -75,7 +75,7 @@
 }
 
 .more-info li strong {
-    color: #ffcc00; /* Highlighted titles */
+    color: #52bdb9; /* Highlighted titles */
 }
 
 .more-info li span {

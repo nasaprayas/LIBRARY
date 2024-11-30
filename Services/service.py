@@ -69,6 +69,10 @@ class userService:
     @staticmethod
     def is_allowed(filename):
         return '.' in filename and filename.rsplit('.', 1)[1].lower() in config.ALLOWED_FORMATS
+    
+    @staticmethod
+    def get_all_members():
+        return Members.query.all()
 
 class employeeService:
     @staticmethod
@@ -241,3 +245,4 @@ class BookService:
     def get_book_by_id(book_id):
         book = Books.query.filter_by(id=book_id).first()
         return book.to_dict()
+    
