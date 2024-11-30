@@ -142,6 +142,7 @@ main {
 
 .book{
     padding: 5px;
+    text-decoration: none;
 }
 
 .prompt{

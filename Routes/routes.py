@@ -6,7 +6,7 @@ bp = Blueprint('bp', __name__)
 
 @bp.route('/home_page', methods=['GET','POST'])
 def home_page():
-    return render_template('home_page.html')
+    return render_template('home_page.html', current_user=current_user)
 
 @bp.route('/login', methods=['GET','POST'])
 def login():
@@ -164,3 +164,8 @@ def search_book():
     search = request.args.get('search').lower()
     results = SearchController.search_book(search)
     return jsonify(results)
+
+@bp.route('/book/<int:book_id>', methods=['GET'])
+def book_view(book_id):
+    book = BookController.book_view(book_id)
+    return render_template('book_view.html', book=book)

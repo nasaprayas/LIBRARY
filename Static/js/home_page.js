@@ -25,7 +25,7 @@ function update_results(results) {
         prompt.textContent = `No results found`;
     } else {
         results.forEach(result => {
-            const book = document.createElement("div");
+            const book = document.createElement("a");
             const book_cover = document.createElement("img");
             const book_name = document.createElement("figcaption");
             book.classList.add('book');
@@ -33,7 +33,8 @@ function update_results(results) {
             book_name.classList.add('book-name');
 
             book_cover.setAttribute("src", `/static/media/book_covers/${result.cover_page}`);
-            book_name.textContent = `${result.title}`;
+            book.setAttribute("href", `/book/${result.book_id}`)
+            book_name.textContent = `${result.title}`
             book.appendChild(book_cover);
             book.appendChild(book_name);
             search_results.appendChild(book);

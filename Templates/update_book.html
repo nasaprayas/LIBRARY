@@ -11,10 +11,12 @@
         <div>
             <label for="book_title">Book Title:</label>
             <input type="text" id="book_title" name="title" required>
+            <ul id="suggestionList">
+            </ul>
         </div>
         <div>
             <label for="book_preface">Book Preface:</label>
-            <input type="text" id="book_preface" name="preface" required>
+            <textarea type="text" id="book_preface" name="preface" style="height:fit-content" required></textarea>
         </div>
         <div>
             <label for="publisher_name">Publisher:</label>
@@ -51,4 +53,7 @@
         <button type="submit">Update</button>
     </form>
 </main>
+{% endblock %}
+{% block js %}
+<script src="{{ url_for('static', filename='js/update_book.js') }}"></script>
 {% endblock %}

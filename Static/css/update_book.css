@@ -18,7 +18,8 @@ main {
 /* Input and select field styling */
 #update_book-form input, 
 #update_book-form select, 
-#update_book-form button {
+#update_book-form button,
+#update_book-form textarea {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
@@ -32,7 +33,8 @@ main {
 
 /* Input focus styling */
 #update_book-form input:focus, 
-#update_book-form select:focus {
+#update_book-form select:focus,
+#update_book-form textarea:focus {
     outline: none;
     border-color: #4ea1d3; /* Brighter border for focus */
     box-shadow: 0px 0px 5px rgba(78, 161, 211, 0.8);
@@ -64,6 +66,7 @@ main {
 #update_book-form div {
     margin-bottom: 20px;
     width: 100%;
+    position: relative;
 }
 
 .profile {
@@ -82,7 +85,7 @@ main {
 }
 
 /* Add rounded corners for all elements */
-input, select, button {
+input, select, button, textarea {
     border-radius: 5px;
 }
 
@@ -90,5 +93,35 @@ div.book_icon img{
     width: 100%; 
 }
 
+#suggestionList {
+    max-height: 150px;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 64px;
+    width: inherit;
+    background: #12263f;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    border-radius: 5px;
+    color: #ffffff91;
+}
 
+#suggestionList li {
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 15px;
+}
 
+#suggestionList li:hover {
+    background: #f0f0f0;
+}
+
+textarea{
+    max-width: 100%;
+    min-width: 100%;
+    height: fit-content;
+}

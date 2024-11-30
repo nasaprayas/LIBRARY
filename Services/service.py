@@ -32,6 +32,7 @@ class userService:
 
     @staticmethod
     def log_in(mail, password, type):
+        user = None
         if type == 'member':
             user = userService.get_member_by_mail(mail)
             if not user:
@@ -39,7 +40,7 @@ class userService:
         elif type == 'admin':
             user = userService.get_employee_by_mail(mail)
             if not user:
-                return {'error': 'member not found'}
+                return {'error': 'admin not found'}
         if user and check_password_hash(user.password_hash, password):
             login_user(user)
             if current_user.is_authenticated:
@@ -235,3 +236,8 @@ class BookService:
         db.session.delete(book)
         db.session.commit()
         return book
+    
+    @staticmethod
+    def get_book_by_id(book_id):
+        book = Books.query.filter_by(id=book_id).first()
+        return book.to_dict()

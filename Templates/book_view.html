@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/book_view.css') }}">
+{% endblock %}
+{% block content %}
+<div class="container" id="main">
+    <main class="book-details">
+        <div class="book-cover">
+            <img src="/static/media/book_covers/{{book['cover_page']}}" alt="Book Cover">
+        </div>
+        <div class="book-info">
+            <h2 class="book-title">{{book['title']}}</h2>
+            <h3 class="book-author">{{book['author']}}</h3>
+            <p class="book-about">{{book['preface']}}</p>
+        </div>
+    </main>
+
+    <section class="more-info">
+        <h3>More Information about the Book</h3>
+        <ul>
+            <li><strong>Author:</strong> <span id="author-name">{{book['author']}}</span></li>
+            <li><strong>About Author:</strong> <span id="about-author">{{book['about_author']}}</span></li>
+            <li><strong>Publisher:</strong> <span id="publisher-name">{{book['publisher']}}</span></li>
+            <li><strong>Where to Find:</strong> <span id="shelf-id">Floor: {{book['floor']}}, Shelf: {{book['shelf_id']}}</span></li>
+        </ul>
+    </section>
+</div>
+{% endblock %}
